@@ -11,12 +11,10 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :spaces
 
+  scope :by_query, lambda { |term| where('name LIKE ?', "%#{term}%") }
+
   def remote_image_url
     read_attribute(:remote_image_url).presence || asset_path("fallbacks/default_remote_image.png")
-  end
-  
-  def self.find_by_query(term)
-    self.where('name LIKE ?', "%#{term}%")
   end
 
 end
