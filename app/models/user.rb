@@ -7,4 +7,9 @@ class User < ActiveRecord::Base
   has_many :blames, class_name: "Rating", foreign_key: "rated_id", conditions: "value < 0"
 
   has_and_belongs_to_many :spaces
+
+  def self.find_by_query(term)
+    self.where('name LIKE ?', "%#{term}%")
+  end
+
 end
