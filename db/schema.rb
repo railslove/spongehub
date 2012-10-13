@@ -34,6 +34,18 @@ ActiveRecord::Schema.define(:version => 20121013095607) do
     t.datetime "updated_at",      :null => false
   end
 
+  create_table "ratings", :force => true do |t|
+    t.string   "text"
+    t.integer  "value"
+    t.integer  "space_id"
+    t.integer  "creator_id"
+    t.integer  "rated_id"
+    t.integer  "chore_id"
+    t.string   "image"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "spaces", :force => true do |t|
     t.string   "name"
     t.string   "picture"
