@@ -1,7 +1,4 @@
-.hero-unit.m-hero{ style: @space.image.file.present? ? "background: url(#{@space.image.url})" : '' }
-  %h1.m-hero--title= @space.name
-  .m-hero--actions
-    = link_to 'Edit', edit_space_path(@space)
+= render partial: 'spaces/header'
 
 .m-box
   %h2 Top Chore
