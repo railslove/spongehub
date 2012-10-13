@@ -4,47 +4,47 @@
     = image_tag(@user.remote_image_url)
 
 .m-box
-  Hello World! My name is 
+  Hello World! My name is
   = @user.name
   = link_to 'Edit', edit_user_path(@user) if @user == current_user
 .row
-  .span4
+  .span3
     %h2 My spaces
     - if @user.spaces.blank?
       Currently I am not a part of a space
     - else
       %ul
-      - @user.spaces do |space|
-        %li=space.name
-  .span4
+      - @user.spaces.each do |space|
+        %li= link_to(space.name, space)
+  .span3
     %h2 My Blames
     - if @user.blames.blank?
       This user wasn't blamed yet
     - else
       %ul
-      - @user.blames do |blame|
+      - @user.blames.each do |blame|
         %li
-          =blame.space
-          =blame.text
-          =blame.chore
-  .span4
+          = blame.space.name
+          = blame.text
+          = blame.chore
+  .span3
     %h2 My Fames
     - if @user.fames.blank?
       This user wasn't famed yet
     - else
       %ul
-      - @user.fames do |fame|
+      - @user.fames.each do |fame|
         %li
-          =fame.space
-          =fame.text
-          =fame.chore
-  .span4
+          = fame.space.name
+          = fame.text
+          = fame.chore
+  .span3
     %h2 My Chores
     - if @user.chores.blank?
       This user has no chores
     - else
       %ul
-      - @user.chores do |chore|
+      - @user.chores.each do |chore|
         %li
-          =chore.space
-          =chore.title
+          = chore.space.name
+          = chore.title
