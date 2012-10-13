@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Basics
-gem 'rails', '3.2.8'
+gem 'rails', :git => 'git://github.com/rails/rails.git', :branch => '3-2-stable'
 gem 'mysql2' # If using mysql in development, this can be outside the production group.
 gem 'haml-rails'
 
