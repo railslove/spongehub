@@ -1,13 +1,20 @@
 source 'https://rubygems.org'
 
+# Basics
 gem 'rails', '3.2.8'
-gem 'omniauth'
-
-gem 'capistrano'
 gem 'mysql2' # If using mysql in development, this can be outside the production group.
-gem 'therubyracer'
-
 gem 'haml-rails'
+
+# Omniauth
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'omniauth-identity'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+
+# Deployment
+gem 'capistrano'
+gem 'therubyracer'
 
 # Gems used only for assets and not required
 # in production environments by default.
