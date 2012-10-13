@@ -1,7 +1,7 @@
 !!! 5
 %html
   %head
-    %title Rumble12
+    %title SpongeHub.io
 
   = stylesheet_link_tag "application", :media => "all"
   = csrf_meta_tags
@@ -26,7 +26,7 @@
                 - if current_user.spaces.any?
                   %li.dropdown
                     =link_to "#", class: "dropdown-toggle", data: {toggle: "dropdown"} do
-                      Spaces
+                      My Spaces
                       %b.caret
                     %ul.dropdown-menu
                       - current_user.spaces.each do |space|

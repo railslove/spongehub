@@ -73,6 +73,22 @@ class ChoresController < ApplicationController
     end
   end
 
+  def take
+    @chore = @space.chores.find(params[:id])
+
+    @chore.taker = current_user
+
+    respond_to do |format|
+      if @chore.save
+        format.html { redirect_to [@space, @chore], notice: 'Chore was successfully taken.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to [@space, @chore], alert: 'Error taking chore: #{@chore.errors.full_message}' }
+        format.json { render json: @chore.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # DELETE /chores/1
   # DELETE /chores/1.json
   def destroy

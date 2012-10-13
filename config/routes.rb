@@ -19,8 +19,14 @@ Rumble12::Application.routes.draw do
   get "pages/homepage"
   get "pages/about"
 
+  resources :user
+
   resources :spaces do
-    resources :chores
+    resources :chores do
+      member do
+        put :take
+      end
+    end
     # Your routes go here!
     resources :ratings
   end

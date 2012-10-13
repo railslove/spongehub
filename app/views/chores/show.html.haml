@@ -1,22 +1,35 @@
-%p
-  %b Title:
-  = @chore.title
-%p
-  %b Description:
-  = @chore.description
-%p
-  %b Creator:
-  = @chore.creator_id
-%p
-  %b Assignee:
-  = @chore.assignee_id
-%p
-  %b Due at:
-  = @chore.due_at
-%p
-  %b Space:
-  = @chore.space_id
+%ul.breadcrumb
+  %li
+    = link_to "Home", root_path
+    %span.divider= ">"
+  %li
+    Space:
+    = link_to @chore.space.name, @space
+    %span.divider= ">"
+  %li.active
+    Chore:
+    = @chore.title
 
-= link_to 'Edit', [:edit, @space, @chore]
-\|
-= link_to 'Back', [@space, :chores]
+.page-header
+  %h1= @chore.title
+
+%p
+  Createy by
+  = link_to @chore.creator.name, @chore.creator
+
+-if @chore.description
+  .well
+    %p= simple_format @chore.description
+%p
+  Taken by:
+  -if @chore.taker
+    = link_to @chore.taker.name, @chore.taker
+  -else
+    no one
+    %br
+    = link_to "Take this!", take_space_chore_path(@space, @chore), method: :put, class: "btn btn-primary"
+%p
+  Due at:
+  = l(@chore.due_at, format: :short)
+
+= link_to 'Edit', [:edit, @space, @chore], class: "btn"
