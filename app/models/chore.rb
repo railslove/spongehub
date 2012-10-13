@@ -9,4 +9,5 @@ class Chore < ActiveRecord::Base
   validates :space_id, presence: true
   validates :creator_id, presence: true
 
+  scope :untaken, where("taker_id IS NULL")
 end
