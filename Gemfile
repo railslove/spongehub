@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # Basics
 gem 'rails', :git => 'git://github.com/rails/rails.git', :branch => '3-2-stable'
 gem 'mysql2' # If using mysql in development, this can be outside the production group.
-gem 'haml-rails'
+gem 'kaminari'
 
 # Omniauth
 gem 'omniauth'
@@ -22,6 +22,7 @@ gem 'mini_magick'
 
 gem 'haml-rails'
 gem 'calendar_helper', :git => 'git://github.com/topfunky/calendar_helper.git'
+gem 'select2-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -6,10 +6,12 @@
   .span6
     %ul#members
       - @users.each do |user|
-        %li
+        %li.m-user
+          = image_tag(user.remote_image_url)
           = user.name
           = link_to('remove', [@space, user], method: :delete)
-
   .span6
-    #add-member
-      Add a user to this space:
+    = form_tag do |f|
+      = label_tag :user_id, 'Add a user to this space'
+      = hidden_field_tag :user_id, nil, { 'data-role' => 'select', :include_blank => true, :class => 'span3' }
+      = submit_tag 'Add', class: 'btn btn-primary btn-small'

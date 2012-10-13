@@ -6,6 +6,11 @@ class SpaceUsersController < ApplicationController
     @users = @space.users
   end
 
+  def create
+    @space.user_ids = (@space.user_ids +  [params[:user_id]].flatten.map(&:to_i)).uniq
+    redirect_to [@space, :users], notice: 'User has been added to this space!'
+  end
+
   def destroy
     if @space.user_ids.size > 1
       @space.user_ids = (@space.user_ids - [params[:id].to_i])

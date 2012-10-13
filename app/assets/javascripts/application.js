@@ -13,3 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-dropdown
+//= require select2
+
+//= require user_select

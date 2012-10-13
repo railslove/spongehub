@@ -11,4 +11,8 @@ class Space < ActiveRecord::Base
   has_and_belongs_to_many :users
 
   validates :name, :presence => true
+
+  def member?(user)
+    user.present? && self.user_ids.include?(user.id)
+  end
 end

@@ -13,6 +13,9 @@ class User < ActiveRecord::Base
 
   def remote_image_url
     read_attribute(:remote_image_url).presence || asset_path("fallbacks/default_remote_image.png")
+
+  def self.find_by_query(term)
+    self.where('name LIKE ?', "%#{term}%")
   end
 
 end
