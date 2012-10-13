@@ -1,7 +1,7 @@
 class Space < ActiveRecord::Base
   attr_accessible :name, :image
 
-  mount_uploader :image, ImageUploader
+  mount_uploader :image, BannerImageUploader
 
   has_many :chores, dependent: :destroy
   has_many :ratings, dependent: :destroy
