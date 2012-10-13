@@ -1,21 +1,24 @@
-.hero-unit.m-hero{ style: "background: url(#{@space.image.url})" }
+.hero-unit.m-hero{ style: @space.image.file.present? ? "background: url(#{@space.image.url})" : '' }
   %h1.m-hero--title= @space.name
-
-= link_to 'Edit', edit_space_path(@space)
+  .m-hero--actions
+    = link_to 'Edit', edit_space_path(@space)
 
 .m-box
-  Top Chore
+  %h2 Top Chore
 
 .row
   .span4
-    %h2 Fame Top 3
-    .action
-      Do it
+    #fames.m-box
+      %h2 Fame Top 3
+      .action
+        Do it
   .span4
-    %h2 Blame Top 3
-    .action
-      Do it
+    #blames.m-box
+      %h2 Blame Top 3
+      .action
+        Do it
   .span4
-    %h2 What to do?
-    .action
-      Do it
+    #chores.m-box
+      %h2 What to do?
+      .action
+        Do it
