@@ -1,0 +1,14 @@
+@mixin fliesstext($size: 14px)
+  font-family: "AvenirNextLTW01-Regular"
+  font-size: $size
+
+@mixin headline-text($size: 22px)
+  font-family: "Avenir Next LT W01 Bold"
+  font-size: $size
+
+body
+  +fliesstext
+
+h1, h2, h3, h4, h5, h6
+  +headline-text
+  font-weight: normal

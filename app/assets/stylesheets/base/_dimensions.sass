@@ -1,0 +1,16 @@
+$margin: 10px
+$padding: 10px
+
+@mixin respond-to($media)
+  @if $media == tiny
+    @media only screen and (max-width: 480px)
+      @content
+  @else if $media == small
+    @media only screen and (max-width: 767px)
+      @content
+  @else if $media == medium
+    @media only screen and (min-width: 768px) and (max-width: 979px)
+      @content
+  @else if $media == large
+    @media only screen and (min-width: 1200px)
+      @content

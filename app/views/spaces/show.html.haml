@@ -1,12 +1,21 @@
-%p#notice= notice
-
-%p
-  %b Name:
-  = @space.name
-%p
-  %b Image:
-  = @space.image
+.hero-unit.m-hero{ style: "background: url(#{@space.image.url})" }
+  %h1.m-hero--title= @space.name
 
 = link_to 'Edit', edit_space_path(@space)
-\|
-= link_to 'Back', spaces_path
+
+.m-box
+  Top Chore
+
+.row
+  .span4
+    %h2 Fame Top 3
+    .action
+      Do it
+  .span4
+    %h2 Blame Top 3
+    .action
+      Do it
+  .span4
+    %h2 What to do?
+    .action
+      Do it
