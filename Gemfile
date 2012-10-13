@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', :git => 'git://github.com/rails/rails.git', :branch => '3-2-stable'
 gem 'omniauth'
 
 gem 'capistrano'
