@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @space.name
+%p
+  %b Picture:
+  = @space.picture
+
+= link_to 'Edit', edit_space_path(@space)
+\|
+= link_to 'Back', spaces_path
