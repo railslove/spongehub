@@ -1,2 +1,9 @@
-%h1 Pages#homepage
-%p Find me in app/views/pages/homepage.html.haml
+%h1 Welcome!
+
+%h2 Spaces
+
+%section.row
+  -@spaces.each do |space|
+    .span4
+      = link_to space do
+        = image_tag space.image_url

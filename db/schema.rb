@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121013112921) do
+ActiveRecord::Schema.define(:version => 20121013120601) do
 
   create_table "authentications", :force => true do |t|
     t.string   "provider",   :null => false
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(:version => 20121013112921) do
     t.string   "title"
     t.text     "description"
     t.integer  "creator_id"
-    t.integer  "assignee_id"
+    t.integer  "taker_id"
     t.datetime "due_at"
     t.integer  "space_id"
     t.datetime "created_at",  :null => false
