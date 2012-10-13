@@ -1,8 +1,8 @@
 class RatingsController < ApplicationController
+
+  before_filter :authentication_required
   before_filter :load_and_ensure_space
 
-  # GET /ratings
-  # GET /ratings.json
   def index
     @ratings = @space.ratings.all
 
@@ -12,8 +12,6 @@ class RatingsController < ApplicationController
     end
   end
 
-  # GET /ratings/1
-  # GET /ratings/1.json
   def show
     @rating = @space.ratings.find(params[:id])
 
@@ -23,8 +21,6 @@ class RatingsController < ApplicationController
     end
   end
 
-  # GET /ratings/new
-  # GET /ratings/new.json
   def new
     @rating = @space.ratings.new
 
@@ -34,13 +30,10 @@ class RatingsController < ApplicationController
     end
   end
 
-  # GET /ratings/1/edit
   def edit
     @rating = @space.ratings.find(params[:id])
   end
 
-  # POST /ratings
-  # POST /ratings.json
   def create
     @rating = @space.ratings.new(params[:rating], :creator => current_user)
 
@@ -55,8 +48,6 @@ class RatingsController < ApplicationController
     end
   end
 
-  # PUT /ratings/1
-  # PUT /ratings/1.json
   def update
     @rating = @space.ratings.find(params[:id])
 
@@ -71,8 +62,6 @@ class RatingsController < ApplicationController
     end
   end
 
-  # DELETE /ratings/1
-  # DELETE /ratings/1.json
   def destroy
     @rating = @space.ratings.find(params[:id])
     @rating.destroy

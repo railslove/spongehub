@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authentication_required
-    redirect_to :root unless current_user
+    redirect_to :root, alert: "Oh, oh! You don't wanna go there!" unless current_user
   end
 
 end

@@ -1,6 +1,7 @@
 class SpacesController < ApplicationController
-  # GET /spaces
-  # GET /spaces.json
+
+  before_filter :authentication_required, :except => [:show, :index]
+
   def index
     @spaces = Space.all
 
@@ -10,8 +11,6 @@ class SpacesController < ApplicationController
     end
   end
 
-  # GET /spaces/1
-  # GET /spaces/1.json
   def show
     @space = Space.find(params[:id])
 
@@ -21,8 +20,6 @@ class SpacesController < ApplicationController
     end
   end
 
-  # GET /spaces/new
-  # GET /spaces/new.json
   def new
     @space = Space.new
 
@@ -32,13 +29,10 @@ class SpacesController < ApplicationController
     end
   end
 
-  # GET /spaces/1/edit
   def edit
     @space = Space.find(params[:id])
   end
 
-  # POST /spaces
-  # POST /spaces.json
   def create
     @space = Space.new(params[:space])
 
@@ -54,8 +48,6 @@ class SpacesController < ApplicationController
     end
   end
 
-  # PUT /spaces/1
-  # PUT /spaces/1.json
   def update
     @space = Space.find(params[:id])
 
@@ -70,8 +62,6 @@ class SpacesController < ApplicationController
     end
   end
 
-  # DELETE /spaces/1
-  # DELETE /spaces/1.json
   def destroy
     @space = Space.find(params[:id])
     @space.destroy

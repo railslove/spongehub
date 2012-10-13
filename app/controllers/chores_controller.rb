@@ -1,9 +1,8 @@
 class ChoresController < ApplicationController
 
+  before_filter :authentication_required
   before_filter :load_and_ensure_space
 
-  # GET /chores
-  # GET /chores.json
   def index
     @chores = @space.chores.all
 
@@ -13,8 +12,6 @@ class ChoresController < ApplicationController
     end
   end
 
-  # GET /chores/1
-  # GET /chores/1.json
   def show
     @chore = @space.chores.find(params[:id])
 
@@ -24,8 +21,6 @@ class ChoresController < ApplicationController
     end
   end
 
-  # GET /chores/new
-  # GET /chores/new.json
   def new
     @chore = @space.chores.new
 
@@ -35,13 +30,10 @@ class ChoresController < ApplicationController
     end
   end
 
-  # GET /chores/1/edit
   def edit
     @chore = @space.chores.find(params[:id])
   end
 
-  # POST /chores
-  # POST /chores.json
   def create
     @chore = @space.chores.new(params[:chore])
     @chore.creator = current_user
@@ -57,8 +49,6 @@ class ChoresController < ApplicationController
     end
   end
 
-  # PUT /chores/1
-  # PUT /chores/1.json
   def update
     @chore = @space.chores.find(params[:id])
 
@@ -89,8 +79,6 @@ class ChoresController < ApplicationController
     end
   end
 
-  # DELETE /chores/1
-  # DELETE /chores/1.json
   def destroy
     @chore = @space.chores.find(params[:id])
     @chore.destroy
