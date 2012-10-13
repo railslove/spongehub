@@ -9,21 +9,41 @@
 .row
   .span4
     %h2 My spaces
-    %ul
     - if @user.spaces.blank?
       Currently I am not a part of a space
     - else
+      %ul
       - @user.spaces do |space|
-        %li space.name
+        %li=space.name
   .span4
     %h2 My Blames
-    .action
-      Do it
+    - if @user.blames.blank?
+      This user wasn't blamed yet
+    - else
+      %ul
+      - @user.blames do |blame|
+        %li
+          =blame.space
+          =blame.text
+          =blame.chore
   .span4
     %h2 My Fames
-    .action
-      Do it
+    - if @user.fames.blank?
+      This user wasn't famed yet
+    - else
+      %ul
+      - @user.fames do |fame|
+        %li
+          =fame.space
+          =fame.text
+          =fame.chore
   .span4
     %h2 My Chores
-    .action
-      Do it
+    - if @user.chores.blank?
+      This user has no chores
+    - else
+      %ul
+      - @user.chores do |chore|
+        %li
+          =chore.space
+          =chore.title
