@@ -53,6 +53,8 @@ GEM
     bcrypt-ruby (3.0.1)
     bootstrap-sass (2.1.0.0)
     builder (3.0.3)
+    calendar_helper (0.2.4)
+      open4
     capistrano (2.13.4)
       highline
       net-scp (>= 1.0.0)
@@ -158,6 +160,7 @@ GEM
     omniauth-twitter (0.0.13)
       multi_json (~> 1.3)
       omniauth-oauth (~> 1.0)
+    open4 (1.3.0)
     polyglot (0.3.3)
     rack (1.4.1)
     rack-cache (1.2)
@@ -197,6 +200,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass
+  calendar_helper
   capistrano
   carrierwave
   coffee-rails (~> 3.2.1)
