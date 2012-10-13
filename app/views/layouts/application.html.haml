@@ -31,10 +31,17 @@
                   %li= link_to "Space 1", "#"
                   %li= link_to "Space 2", "#"
                   %li= link_to "Space 3", "#"
-              %li
-                =link_to "Sign Up"
-              %li
-                =link_to "Login"
+              - if current_user
+                %li
+                  = link_to "Sign out", signout_path
+              - else
+                %li
+                  = link_to "Sign in with Twitter", "/auth/twitter"
+                  = link_to "Sign in with Github", "/auth/github"
+                  = link_to "Sign in with facebook", "/auth/facebook"                  
+                  = link_to "Sign in unsocial", "/identities/new"                  
+                %li
+                  =link_to "Login"
 
     .container
       = yield
