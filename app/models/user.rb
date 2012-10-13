@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
 
   def update_identity_email
     authentication = Authentication.find_by_user_id_and_provider(self.id, "identity")
-    identity = authentication.identity
+    identity = authentication.identity if authentication
     unless identity.blank?
       identity.email = self.email
       identity.save!
