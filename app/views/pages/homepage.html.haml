@@ -16,7 +16,10 @@
       schedule
     %li Have fun as a team and enjoy your nice space!
 
-  = link_to "Sign up now!", root_path, class: "btn btn-primary"
+  - if current_user
+    = link_to "Create a space!", [:new, :space], class: "btn btn-primary"
+  - else
+    = link_to "Sign up now!", root_path, class: "btn btn-primary"
 
 %h2 Spaces
 

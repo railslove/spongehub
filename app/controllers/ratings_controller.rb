@@ -46,7 +46,7 @@ class RatingsController < ApplicationController
 
     respond_to do |format|
       if @rating.save
-        format.html { redirect_to [@space, @rating], notice: 'Rating was successfully created.' }
+        format.html { redirect_to @space, notice: 'Rating was successfully created.' }
         format.json { render json: @rating, status: :created, location: [@space, @rating] }
       else
         format.html { render action: "new" }

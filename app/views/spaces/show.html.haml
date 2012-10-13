@@ -1,21 +1,41 @@
-.hero-unit.m-hero{ style: "background: url(#{@space.image.url})" }
-  %h1.m-hero--title= @space.name
-
-= link_to 'Edit', edit_space_path(@space)
+= render partial: 'spaces/header'
 
 .m-box
-  Top Chore
+  %h2 Top Chore
 
 .row
   .span4
-    %h2 Fame Top 3
-    .action
-      Do it
+    #fames.m-box
+      %h2 Fame Top 3
+
+      -if @space.fames.any?
+        %ul.unstyled
+          -@space.fames.limit(3).each do |fame|
+            %li.well
+              = fame.text
+
+      = form_for @space.ratings.new(value: 1), url: space_ratings_path(@space), method: "POST", html: {class: "rating-form_fame"} do |f|
+        = f.hidden_field :value
+        = f.text_area :text, placeholder: "I like ...", class: "m-input_textarea rating-form--textarea"
+        = f.submit "Fame", class: "btn m-button rating-form--submit"
+
   .span4
-    %h2 Blame Top 3
-    .action
-      Do it
+    #blames.m-box
+      %h2 Blame Top 3
+
+      -if @space.blames.any?
+        %ul.unstyled
+          -@space.blames.limit(3).each do |blame|
+            %li.well
+              = blame.text
+
+      = form_for @space.ratings.new(value: -1), url: space_ratings_path(@space), method: "POST", html: {class: "rating-form_blame"} do |f|
+        = f.hidden_field :value
+        = f.text_area :text, placeholder: "It's a mess ...", class: "m-input_textarea rating-form--textarea"
+        = f.submit "Blame", class: "btn m-button_blame rating-form--submit"
+
   .span4
-    %h2 What to do?
-    .action
-      Do it
+    #chores.m-box
+      %h2 What to do?
+      .action
+        Do it
