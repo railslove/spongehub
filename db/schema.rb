@@ -13,17 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20121013100920) do
 
-  create_table "chores", :force => true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.integer  "creator_id"
-    t.integer  "assignee_id"
-    t.datetime "due_at"
-    t.integer  "space_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
   create_table "authentications", :force => true do |t|
     t.string   "provider",   :null => false
     t.string   "uid",        :null => false
@@ -36,6 +25,17 @@ ActiveRecord::Schema.define(:version => 20121013100920) do
 
   add_index "authentications", ["provider", "uid"], :name => "index_authentications_on_provider_and_uid"
   add_index "authentications", ["user_id"], :name => "index_authentications_on_user_id"
+
+  create_table "chores", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "creator_id"
+    t.integer  "assignee_id"
+    t.datetime "due_at"
+    t.integer  "space_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "identities", :force => true do |t|
     t.string   "name"

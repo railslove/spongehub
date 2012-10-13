@@ -44,8 +44,7 @@ class ChoresController < ApplicationController
   # POST /chores.json
   def create
     @chore = @space.chores.new(params[:chore])
-
-    # TODO: @chore.creator = current_user
+    @chore.creator = current_user
 
     respond_to do |format|
       if @chore.save
