@@ -27,8 +27,8 @@ Rumble12::Application.routes.draw do
         put :take
       end
     end
-    # Your routes go here!
     resources :ratings
+    resources :users, controller: :space_users, only: [:index, :destroy]
   end
 
   # You can have the root of your site routed with "root"

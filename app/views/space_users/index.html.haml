@@ -1,0 +1,15 @@
+= render partial: 'spaces/header'
+
+%h2 Members
+
+.row
+  .span6
+    %ul#members
+      - @users.each do |user|
+        %li
+          = user.name
+          = link_to('remove', [@space, user], method: :delete)
+
+  .span6
+    #add-member
+      Add a user to this space:
