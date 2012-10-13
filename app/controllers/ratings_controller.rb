@@ -1,8 +1,10 @@
 class RatingsController < ApplicationController
+  before_filter :load_and_ensure_space
+
   # GET /ratings
   # GET /ratings.json
   def index
-    @ratings = Rating.all
+    @ratings = @space.ratings.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +15,7 @@ class RatingsController < ApplicationController
   # GET /ratings/1
   # GET /ratings/1.json
   def show
-    @rating = Rating.find(params[:id])
+    @rating = @space.ratings.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +26,7 @@ class RatingsController < ApplicationController
   # GET /ratings/new
   # GET /ratings/new.json
   def new
-    @rating = Rating.new
+    @rating = @space.ratings.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,18 +36,18 @@ class RatingsController < ApplicationController
 
   # GET /ratings/1/edit
   def edit
-    @rating = Rating.find(params[:id])
+    @rating = @space.ratings.find(params[:id])
   end
 
   # POST /ratings
   # POST /ratings.json
   def create
-    @rating = Rating.new(params[:rating])
+    @rating = @space.ratings.new(params[:rating], :creator => current_user)
 
     respond_to do |format|
       if @rating.save
-        format.html { redirect_to @rating, notice: 'Rating was successfully created.' }
-        format.json { render json: @rating, status: :created, location: @rating }
+        format.html { redirect_to [@space, @rating], notice: 'Rating was successfully created.' }
+        format.json { render json: @rating, status: :created, location: [@space, @rating] }
       else
         format.html { render action: "new" }
         format.json { render json: @rating.errors, status: :unprocessable_entity }
@@ -56,7 +58,7 @@ class RatingsController < ApplicationController
   # PUT /ratings/1
   # PUT /ratings/1.json
   def update
-    @rating = Rating.find(params[:id])
+    @rating = @space.ratings.find(params[:id])
 
     respond_to do |format|
       if @rating.update_attributes(params[:rating])
@@ -72,11 +74,11 @@ class RatingsController < ApplicationController
   # DELETE /ratings/1
   # DELETE /ratings/1.json
   def destroy
-    @rating = Rating.find(params[:id])
+    @rating = @space.ratings.find(params[:id])
     @rating.destroy
 
     respond_to do |format|
-      format.html { redirect_to ratings_url }
+      format.html { redirect_to space_ratings_url(@space) }
       format.json { head :no_content }
     end
   end

@@ -23,16 +23,16 @@
 
             %ul.nav.pull-right
               - if current_user
-                %li.dropdown
-                  =link_to "#", class: "dropdown-toggle", data: {toggle: "dropdown"} do
-                    Spaces
-                    %b.caret
-                  %ul.dropdown-menu
-                    %li= link_to "Space 1", "#"
-                    %li= link_to "Space 2", "#"
-                    %li= link_to "Space 3", "#"
-                  %li
-                    = link_to "Sign out", signout_path
+                - if current_user.spaces.any?
+                  %li.dropdown
+                    =link_to "#", class: "dropdown-toggle", data: {toggle: "dropdown"} do
+                      Spaces
+                      %b.caret
+                    %ul.dropdown-menu
+                      - current_user.spaces.each do |space|
+                        %li= link_to space.name, space
+                %li
+                  = link_to "Sign out", signout_path
               - else
                 %li.dropdown
                   =link_to "#", class: "dropdown-toggle", data: {toggle: "dropdown"} do
