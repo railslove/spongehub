@@ -1,0 +1,21 @@
+.m-hero
+  border-radius: 0
+  height: 240px
+  margin-top: 20px
+  padding: 0
+  position: relative
+
+  @include respond-to(small)
+    height: 124px
+  @include respond-to(medium)
+    height: 192px
+
+  .m-hero--title
+    display: inline-block
+    position: absolute
+    bottom: $margin
+    left: $margin
+    padding: $padding
+    background-color: $transparent-color
+    color: $white
+    font-weight: normal
