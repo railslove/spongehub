@@ -20,6 +20,7 @@ Rumble12::Application.routes.draw do
   get "pages/about"
 
   resources :spaces do
+    resources :chores
     # Your routes go here!
     resources :ratings
   end
