@@ -3,6 +3,7 @@ class Authentication < ActiveRecord::Base
   attr_accessible :provider, :uid
 
   belongs_to :user
+  belongs_to :identity, foreign_key: "uid"
 
   validates :provider, :presence => true
   validates :uid, :presence => true

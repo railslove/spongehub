@@ -6,6 +6,7 @@
 .m-box
   Hello World! My name is 
   = @user.name
+  = link_to 'Edit', edit_user_path(@user) if @user == current_user
 .row
   .span4
     %h2 My spaces
