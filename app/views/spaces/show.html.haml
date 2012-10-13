@@ -47,3 +47,5 @@
               %h3.chore-list--item--title.pull-left= chore.title
               -if current_user
                 = link_to "I will do it", take_space_chore_path(@space, chore), method: :put, class: "btn pull-right chore-list--item--button"
+
+      = link_to "See all chores", space_chores_path(@space)

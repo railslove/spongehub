@@ -21,6 +21,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 gem 'haml-rails'
+gem 'calendar_helper'
 
 # Gems used only for assets and not required
 # in production environments by default.

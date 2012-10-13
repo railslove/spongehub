@@ -1,29 +1,43 @@
-%h1 Listing chores
+%ul.breadcrumb
+  %li
+    = link_to "Home", root_path
+    %span.divider= ">"
+  %li
+    Space:
+    = link_to @space.name, @space
+    %span.divider= ">"
+  %li.active
+    Chores
 
-%table
-  %tr
-    %th Title
-    %th Description
-    %th Creator
-    %th Taker
-    %th Due at
-    %th Space
-    %th
-    %th
-    %th
+.page-header
+  %h1 Chores
 
-  - @chores.each do |chore|
-    %tr
-      %td= chore.title
-      %td= chore.description
-      %td= chore.creator_id
-      %td= chore.taker_id
-      %td= chore.due_at
-      %td= chore.space_id
-      %td= link_to 'Show', [@space, chore]
-      %td= link_to 'Edit', [:edit, @space, chore]
-      %td= link_to 'Destroy', [@space, chore], method: :delete, data: { confirm: 'Are you sure?' }
+.row
+  .span4
+    %h3 Dateless chores
+    = link_to 'New Chore', [:new, @space, :chore]
 
-%br
+  .span8
+    %table
+      %tr
+        %th Title
+        %th Description
+        %th Creator
+        %th Taker
+        %th Due at
+        %th Space
+        %th
+        %th
+        %th
 
-= link_to 'New Chore', [:new, @space, :chore]
+      - @chores.each do |chore|
+        %tr
+          %td= chore.title
+          %td= chore.description
+          %td= chore.creator_id
+          %td= chore.taker_id
+          %td= chore.due_at
+          %td= chore.space_id
+          %td= link_to 'Show', [@space, chore]
+          %td= link_to 'Edit', [:edit, @space, chore]
+          %td= link_to 'Destroy', [@space, chore], method: :delete, data: { confirm: 'Are you sure?' }
