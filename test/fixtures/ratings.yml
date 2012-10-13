@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  text: MyString
+  space_id: 1
+  creator_id: 1
+  rated_id: 1
+  chore_id: 1
+  image: MyString
+
+two:
+  text: MyString
+  space_id: 1
+  creator_id: 1
+  rated_id: 1
+  chore_id: 1
+  image: MyString

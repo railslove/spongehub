@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121013095607) do
+ActiveRecord::Schema.define(:version => 20121013103244) do
 
   create_table "authentications", :force => true do |t|
     t.string   "provider",   :null => false
@@ -26,6 +26,17 @@ ActiveRecord::Schema.define(:version => 20121013095607) do
   add_index "authentications", ["provider", "uid"], :name => "index_authentications_on_provider_and_uid"
   add_index "authentications", ["user_id"], :name => "index_authentications_on_user_id"
 
+  create_table "chores", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "creator_id"
+    t.integer  "assignee_id"
+    t.datetime "due_at"
+    t.integer  "space_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "identities", :force => true do |t|
     t.string   "name"
     t.string   "email"
@@ -34,11 +45,28 @@ ActiveRecord::Schema.define(:version => 20121013095607) do
     t.datetime "updated_at",      :null => false
   end
 
+  create_table "ratings", :force => true do |t|
+    t.string   "text"
+    t.integer  "value"
+    t.integer  "space_id"
+    t.integer  "creator_id"
+    t.integer  "rated_id"
+    t.integer  "chore_id"
+    t.string   "image"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "spaces", :force => true do |t|
     t.string   "name"
     t.string   "picture"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "spaces_users", :force => true do |t|
+    t.integer "space_id"
+    t.integer "user_id"
   end
 
   create_table "users", :force => true do |t|

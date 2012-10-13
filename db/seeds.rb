@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+sl = Space.create(name: "Sheldon & Leonards flat")
+gmf = Space.create(name: "Coworkingspace GMF")
+fri = Space.create(name: "Joey Tribbianis flat")
+os = Space.create(name: "Office Space")
+max = Space.create(name: "Max WG")
+k1 = Space.create(name: "Kommune 1")

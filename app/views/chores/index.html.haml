@@ -1,0 +1,29 @@
+%h1 Listing chores
+
+%table
+  %tr
+    %th Title
+    %th Description
+    %th Creator
+    %th Assignee
+    %th Due at
+    %th Space
+    %th
+    %th
+    %th
+
+  - @chores.each do |chore|
+    %tr
+      %td= chore.title
+      %td= chore.description
+      %td= chore.creator_id
+      %td= chore.assignee_id
+      %td= chore.due_at
+      %td= chore.space_id
+      %td= link_to 'Show', [@space, chore]
+      %td= link_to 'Edit', [:edit, @space, chore]
+      %td= link_to 'Destroy', [@space, chore], method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Chore', [:new, @space, :chore]

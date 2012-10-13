@@ -1,0 +1,22 @@
+%p
+  %b Title:
+  = @chore.title
+%p
+  %b Description:
+  = @chore.description
+%p
+  %b Creator:
+  = @chore.creator_id
+%p
+  %b Assignee:
+  = @chore.assignee_id
+%p
+  %b Due at:
+  = @chore.due_at
+%p
+  %b Space:
+  = @chore.space_id
+
+= link_to 'Edit', [:edit, @space, @chore]
+\|
+= link_to 'Back', [@space, :chores]
