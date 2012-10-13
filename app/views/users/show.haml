@@ -1,0 +1,29 @@
+.hero-unit.m-hero
+  %h1.m-hero--title
+    = @user.name
+    = image_tag(@user.remote_image_url)
+
+.m-box
+  Hello World! My name is 
+  = @user.name
+.row
+  .span4
+    %h2 My spaces
+    %ul
+    - if @user.spaces.blank?
+      Currently I am not a part of a space
+    - else
+      - @user.spaces do |space|
+        %li space.name
+  .span4
+    %h2 My Blames
+    .action
+      Do it
+  .span4
+    %h2 My Fames
+    .action
+      Do it
+  .span4
+    %h2 My Chores
+    .action
+      Do it

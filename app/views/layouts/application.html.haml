@@ -23,6 +23,10 @@
 
             %ul.nav.pull-right
               - if current_user
+                %li.user-header-image
+                  = link_to user_path(current_user) do
+                    = image_tag(current_user.remote_image_url)
+                    = current_user.name
                 - if current_user.spaces.any?
                   %li.dropdown
                     =link_to "#", class: "dropdown-toggle", data: {toggle: "dropdown"} do
@@ -34,6 +38,8 @@
                 %li
                   = link_to "Sign out", signout_path
               - else
+                %li.dropdown
+                  =link_to "Login or...", "/auth/identity"
                 %li.dropdown
                   =link_to "#", class: "dropdown-toggle", data: {toggle: "dropdown"} do
                     Sign in using ..

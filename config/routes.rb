@@ -19,7 +19,7 @@ Rumble12::Application.routes.draw do
   get "pages/homepage"
   get "pages/about"
 
-  resources :user
+  resources :users
 
   resources :spaces do
     resources :chores do

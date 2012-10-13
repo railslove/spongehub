@@ -14,6 +14,11 @@ class Authentication < ActiveRecord::Base
     if auth.user.nil?
       user = auth.build_user
       user.name = auth_hash['info']['name']
+      if auth_hash['info']['image'].present? 
+        user.remote_image_url = auth_hash['info']['image']
+      elsif auth_hash['info']['email']
+        user.remote_image_url = "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(auth_hash['info']['email'])}?d=404" rescue nil
+      end 
       user.save!
       auth.save
     end
