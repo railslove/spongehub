@@ -44,6 +44,7 @@ class SpacesController < ApplicationController
 
     respond_to do |format|
       if @space.save
+        @space.users << current_user
         format.html { redirect_to @space, notice: 'Space was successfully created.' }
         format.json { render json: @space, status: :created, location: @space }
       else
