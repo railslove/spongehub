@@ -6,6 +6,8 @@ class ChoresController < ApplicationController
   def index
     @chores = @space.chores.all
 
+    @month_chores = @space.chores.for_month(Date.today).group_by{ |chore| chore.due_at.to_date }
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @chores }

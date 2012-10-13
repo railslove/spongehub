@@ -18,7 +18,7 @@
 
     = render "chores/chore_list", chores: @space.chores.untaken.dateless
 
-    = link_to 'New Chore', [:new, @space, :chore]
+    = link_to 'New Chore', [:new, @space, :chore], class: "btn btn-primary"
 
   .span8
     %h3 Chore calendar

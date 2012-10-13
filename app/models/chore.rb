@@ -11,5 +11,5 @@ class Chore < ActiveRecord::Base
 
   scope :untaken, where("taker_id IS NULL")
   scope :dateless, where("due_at IS NULL")
-  #scope :on_date, ->(date) { where("due_at = DATE(#{date})") }
+  scope :for_month, ->(date) { where("due_at BETWEEN DATE('#{date.beginning_of_month}') AND DATE('#{date.end_of_month}')") }
 end
