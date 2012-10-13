@@ -5,14 +5,18 @@
 
 .row
   .span4
-    #fames.m-box
+    .m-box
       %h2 Fame Top 3
 
+    .m-box
+      %h2 Most Recent Fames
       -if @space.fames.any?
         %ul.unstyled
           -@space.fames.limit(3).each do |fame|
             %li.well
               = fame.text
+              .m-moment{ 'data-role' => 'moment' }= fame.created_at.to_s(:db)
+
 
       -if current_user
         = form_for @space.ratings.new(value: 1), url: space_ratings_path(@space), method: :post, html: {class: "rating-form_fame"} do |f|
@@ -22,14 +26,17 @@
           = f.submit "Fame", class: "btn m-button rating-form--submit"
 
   .span4
-    #blames.m-box
+    .m-box
       %h2 Blame Top 3
 
+    .m-box
+      %h2 Most Recent Blames
       -if @space.blames.any?
         %ul.unstyled
           -@space.blames.limit(3).each do |blame|
             %li.well
               = blame.text
+              .m-moment{ 'data-role' => 'moment' }= blame.created_at.to_s(:db)
 
       -if current_user
         = form_for @space.ratings.new(value: -1), url: space_ratings_path(@space), method: :post, html: {class: "rating-form_blame"} do |f|

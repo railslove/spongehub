@@ -14,5 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap-dropdown
 //= require select2
+//= require moment.min
 
 //= require user_select
+//= require datetime_moment
