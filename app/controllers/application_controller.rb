@@ -14,4 +14,8 @@ class ApplicationController < ActionController::Base
     redirect_to :root, alert: 'The space you are looking for does not exist!'
   end
 
+  def authentication_required
+    redirect_to :root unless current_user
+  end
+
 end
