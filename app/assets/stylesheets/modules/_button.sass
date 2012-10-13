@@ -1,11 +1,21 @@
 // only twitter overrides until we have our complete own button module
 
 .m-button
-  border-color: $colored-border-color
-  color: $primary-text-color
+  display: inline-block
+  border: 1px solid $light-blue
+  +border-radius
+  +fliesstext($small-headline-font-size, $primary-text-color)
+  font-weight: bold
+  line-height: 40px
+  padding: 0 $padding*1.5
+  text-transform: uppercase
+  text-decoration: none
+  background-color: $white
 
   &:hover
-    color: $primary-text-color
+    color: $light-blue
+    text-decoration: none
+    +background-image(linear-gradient($white, $light-grey))
 
 .m-button_blame
   border-color: $blame-color

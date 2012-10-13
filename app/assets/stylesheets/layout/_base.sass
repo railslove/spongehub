@@ -1,7 +1,13 @@
-@media (min-width: 980px)
-  body
-    padding-top: 60px
-    padding-bottom: 40px
+body
+  +background-image(linear-gradient($lightest-grey, $white))
+  padding-top: $padding/2
+  padding-bottom: $padding*4
+
+.container
+  background-color: $light-grey
+  +box-shadow(0px 0px 18px rgba(#000, .1))
+  position: relative
+  overflow: visible
 
 .user-header-image img
   width: 20px
@@ -9,3 +15,7 @@
 
 .voteforus
   position: absolute
+
+.content
+  background-image: image-url("backgrounds/header_dreck_bottom.png")
+  background-repeat: no-repeat

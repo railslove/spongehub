@@ -1,16 +1,32 @@
-@mixin fliesstext($size: 14px)
+$button-font-size: 14px
+
+$small-headline-font-size: 14px
+$medium-headline-font-size: 20px
+$headline-font-size: 25px
+
+
+// sign up 39px
+
+// satisfy  29px
+
+
+
+@mixin fliesstext($size: 14px, $color: $dark-text-color)
   font-family: "AvenirNextLTW01-Regular"
   font-size: $size
   line-height: $size
+  font-weight: normal
+  color: $color
 
-@mixin headline-text($size: 22px)
+@mixin headline-text($size: $medium-headline-font-size, $color: $dark-text-color)
   font-family: "Avenir Next LT W01 Bold"
   font-size: $size
   line-height: $size
+  font-weight: normal
+  color: $color
 
 body
   +fliesstext
 
 h1, h2, h3, h4, h5, h6
   +headline-text
-  font-weight: normal
