@@ -20,10 +20,10 @@
       %td= rating.rated_id
       %td= rating.chore_id
       %td= rating.image
-      %td= link_to 'Show', rating
-      %td= link_to 'Edit', edit_rating_path(rating)
-      %td= link_to 'Destroy', rating, method: :delete, data: { confirm: 'Are you sure?' }
+      %td= link_to 'Show', [@space, rating]
+      %td= link_to 'Edit', edit_space_rating_path(@space, rating)
+      %td= link_to 'Destroy', [@space, rating], method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 
-= link_to 'New Rating', new_rating_path
+= link_to 'New Rating', new_space_rating_path(@space)

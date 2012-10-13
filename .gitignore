@@ -17,3 +17,4 @@
 database.yml
 .rvmrc
 settings.yml
+/public/uploads/
