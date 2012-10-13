@@ -10,6 +10,11 @@ if defined?(Bundler)
 end
 
 module Rumble12
+
+  def self.config
+    Application.config
+  end
+
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

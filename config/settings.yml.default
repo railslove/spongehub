@@ -1,0 +1,40 @@
+development: &default
+  authentication:
+    twitter:
+      key:
+      secret:
+    facebook:
+      key:
+      secret:    
+    github:
+      key:
+      secret:    
+  airbrake:
+    api_key: 'YOUR_API_KEY'
+  email:
+    default_from: "mail@spongehub.io"
+  # internal email sending
+  smtp:
+    address: "localhost"
+    port: 1025
+    domain: "www.yourdomain.com"
+test:
+  airbrake:
+    api_key: 'YOUR_API_KEY'
+  email:
+    default_from: "mail@spongehub.io"
+  # internal email sending
+  smtp:
+    address: "localhost"
+    port: 1025
+    domain: "www.yourdomain.com"
+production:
+  airbrake:
+    api_key: 'YOUR_API_KEY'
+  email:
+    default_from: "mail@spongehub.io"
+  # internal email sending
+  smtp:
+    address: "localhost"
+    port: 1025
+    domain: "www.yourdomain.com"
