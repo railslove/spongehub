@@ -10,4 +10,6 @@ class Chore < ActiveRecord::Base
   validates :creator_id, presence: true
 
   scope :untaken, where("taker_id IS NULL")
+  scope :dateless, where("due_at IS NULL")
+  #scope :on_date, ->(date) { where("due_at = DATE(#{date})") }
 end

@@ -21,7 +21,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 gem 'haml-rails'
-gem 'calendar_helper'
+gem 'calendar_helper', :git => 'git://github.com/topfunky/calendar_helper.git'
 
 # Gems used only for assets and not required
 # in production environments by default.

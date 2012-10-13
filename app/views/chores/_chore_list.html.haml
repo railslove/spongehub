@@ -1,0 +1,9 @@
+-if chores.any?
+  %ul.chore-list.unstyled
+    -chores.take(3).each do |chore|
+      %li.chore-list--item.well
+        %h3.chore-list--item--title.pull-left= chore.title
+        -if current_user
+          = link_to "I will do it", take_space_chore_path(@space, chore), method: :put, class: "btn pull-right chore-list--item--button"
+-else
+  %p Yiieha, no chores.  GO partey!

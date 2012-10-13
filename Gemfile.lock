@@ -46,6 +46,13 @@ GIT
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
 
+GIT
+  remote: git://github.com/topfunky/calendar_helper.git
+  revision: 763a497dbd8833b98d92815667b367ade938c00c
+  specs:
+    calendar_helper (0.2.5)
+      open4
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -200,7 +207,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass
-  calendar_helper
+  calendar_helper!
   capistrano
   carrierwave
   coffee-rails (~> 3.2.1)

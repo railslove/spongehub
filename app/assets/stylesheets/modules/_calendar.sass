@@ -1,0 +1,34 @@
+.m-calendar
+  width: 100%
+  border-collapse: collapse
+
+  td, th
+    border: 1px solid $border-color
+
+  thead
+    td, th
+      padding: 3px
+
+  .m-calendar--day, .m-calendar--other-month-day
+    height: 75px // + 2*3px
+    width: 75px // (572px / 7) - borders
+    text-align: right
+
+    &.weekendDay
+
+    &.today
+
+  th.m-calendar--month-heading, tr.m-calendar--day-heading > th
+    text-align: center
+
+  .m-calendar--other-month-day
+    color: $disabled-color
+
+
+  .m-calendar--cell
+    +box-sizing(border-box)
+    width: 100%
+    height: 100%
+    padding: 3px
+    position: relative
+    text-align: right

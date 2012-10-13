@@ -1,4 +1,4 @@
-.hero-unit.m-hero{ style: @space.image.file.present? ? "background: url(#{@space.image.url})" : '' }
+.hero-unit.m-hero{ style: "background: url(#{@space.image.url})" }
   %h1.m-hero--title= link_to(@space.name, @space)
   .m-hero--actions
     = link_to 'Edit', edit_space_path(@space)

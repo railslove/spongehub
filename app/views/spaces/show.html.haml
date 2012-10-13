@@ -40,12 +40,6 @@
     #chores.m-box
       %h2 What to do?
 
-      -if @space.chores.any?
-        %ul.chore-list.unstyled
-          -@space.chores.untaken.limit(3).each do |chore|
-            %li.chore-list--item.well
-              %h3.chore-list--item--title.pull-left= chore.title
-              -if current_user
-                = link_to "I will do it", take_space_chore_path(@space, chore), method: :put, class: "btn pull-right chore-list--item--button"
+      = render "chores/chore_list", chores: @space.chores.untaken
 
       = link_to "See all chores", space_chores_path(@space)

@@ -15,29 +15,13 @@
 .row
   .span4
     %h3 Dateless chores
+
+    = render "chores/chore_list", chores: @space.chores.untaken.dateless
+
     = link_to 'New Chore', [:new, @space, :chore]
 
   .span8
-    %table
-      %tr
-        %th Title
-        %th Description
-        %th Creator
-        %th Taker
-        %th Due at
-        %th Space
-        %th
-        %th
-        %th
+    %h3 Chore calendar
 
-      - @chores.each do |chore|
-        %tr
-          %td= chore.title
-          %td= chore.description
-          %td= chore.creator_id
-          %td= chore.taker_id
-          %td= chore.due_at
-          %td= chore.space_id
-          %td= link_to 'Show', [@space, chore]
-          %td= link_to 'Edit', [:edit, @space, chore]
-          %td= link_to 'Destroy', [@space, chore], method: :delete, data: { confirm: 'Are you sure?' }
+    = calendar(:year => Date.today.year, :month => Date.today.month, :first_day_of_week => 1, :table_class => "m-calendar",  :month_name_class => "m-calendar--month-heading", :other_month_class => "m-calendar--other-month-day", :day_name_class => "m-calendar--day-heading", :day_class => "m-calendar--day" ) do |date|
+      - render_calendar_cell(date)
