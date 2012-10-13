@@ -9,4 +9,5 @@ class Rating < ActiveRecord::Base
 
   validates :value, :numericality => true
   validates :space, :presence => true
+  validates :text, :presence => true
 end

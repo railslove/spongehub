@@ -7,8 +7,12 @@
   .span4
     #fames.m-box
       %h2 Fame Top 3
-      .action
-        Do it
+
+      -if @space.fames.any?
+        %ul.unstyled
+          -@space.fames.limit(3).each do |fame|
+            %li.well
+              = fame.text
 
       = form_for @space.ratings.new(value: 1), url: space_ratings_path(@space), method: "POST", html: {class: "rating-form_fame"} do |f|
         = f.hidden_field :value
@@ -18,8 +22,12 @@
   .span4
     #blames.m-box
       %h2 Blame Top 3
-      .action
-        Do it
+
+      -if @space.blames.any?
+        %ul.unstyled
+          -@space.blames.limit(3).each do |blame|
+            %li.well
+              = blame.text
 
       = form_for @space.ratings.new(value: -1), url: space_ratings_path(@space), method: "POST", html: {class: "rating-form_blame"} do |f|
         = f.hidden_field :value

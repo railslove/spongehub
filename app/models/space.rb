@@ -5,6 +5,9 @@ class Space < ActiveRecord::Base
 
   has_many :chores, dependent: :destroy
   has_many :ratings, dependent: :destroy
+  has_many :fames,  class_name: "Rating", conditions: "value > 0"
+  has_many :blames, class_name: "Rating", conditions: "value < 0"
+
   has_and_belongs_to_many :users
 
   validates :name, :presence => true
