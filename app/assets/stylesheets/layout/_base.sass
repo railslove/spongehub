@@ -13,9 +13,23 @@ body
   width: 20px
   height: 20px
 
+.row
+  margin-bottom: $margin*2
+
 .voteforus
   position: absolute
+  top: 160px
 
 .content
   background-image: image-url("backgrounds/header_dreck_bottom.png")
   background-repeat: no-repeat
+  padding-top: 1px
+  position: relative
+
+.title
+  +headline-text($medium-headline-font-size)
+  text-align: center
+  position: absolute
+  top: -85px
+  left: 110px
+  line-height: $medium-headline-font-size * 1.5

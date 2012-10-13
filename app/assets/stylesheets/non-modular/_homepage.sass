@@ -1,0 +1,55 @@
+.homepage-hero
+  height: 196px + 73px
+
+  .claim, .talking-points
+    position: relative
+    left: -130px
+    text-align: center
+
+  .claim
+    text-transform: uppercase
+    +headline-text($big-headline-font-size, $green)
+    line-height: 1.6em
+
+  .talking-points
+    margin-top: $margin
+    text-align: center
+    > li
+      +headline-text($small-headline-font-size)
+      margin-bottom: $padding/2
+
+  .sign-up
+    width: 208px
+    height: 196px
+    position: absolute
+    left: 0px
+    top: 73px
+    background-image: image-url("backgrounds/geschlabbert.png")
+
+    .sign-up--link
+      +headline-text
+      color: $white
+      font-size: 39px
+      text-transform: uppercase
+      position: absolute
+      right: 11px
+      bottom: 43px
+      +rotate(-10deg)
+      &:hover
+        color: $dark-text-color
+
+      .current_user &
+        font-size: 22px
+
+  .wischhand
+    background-image: image-url("backgrounds/wischhand.png")
+    width: 350px
+    height: 220px
+    position: absolute
+    right: 0px
+    top: 55px
+
+.pages.homepage
+  .movie
+    text-align: center
+    margin-bottom: $margin*3

@@ -1,32 +1,40 @@
-%h1 Our clean space :-)
+%h1.title
+  Your coworking space is a mess?
+  %br
+  Some people never do anything in the office?
 
-%p
-  Your coworking space is a mess?  Some people never do anything in the office?  It's no fun making schedules and reminding your roomies?
+.homepage-hero
+  .claim.m-inverted-text
+    %span SpongeHub helps you to keep your space
+    %br
+    %span clean in a friendly and rewarding way.
 
-%p
-  %strong SpongeHub helps you to keep your space clean in a friendly and rewarding way
+  %ul.talking-points.unstyled
+    %li Ideal for:  Coworking spaces, offices, shared flats
+    %li Reward people instead of being pushy
+    %li
+      Clean when it fits
+      %strong your
+      schedule
+    %li Have fun as a team and enjoy your nice space!
 
-%ul
-  %li Ideal for:  Coworking spaces, offices, shared appartments
-  %li Reward people instead of being pushy
-  %li
-    Clean when it fits
-    %strong your
-    schedule
-  %li Have fun as a team and enjoy your nice space!
+  .sign-up
+    - if current_user
+      = link_to "Create a space!", [:new, :space], class: "sign-up--link"
+    - else
+      = link_to "Sign up!", root_path, class: "sign-up--link"
 
-- if current_user
-  = link_to "Create a space!", [:new, :space], class: "btn btn-primary"
-- else
-  = link_to "Sign up now!", root_path, class: "btn btn-primary"
+  .wischhand
 
-%h2 Spaces
+.page-header
+  %h2 Participating spaces
 
 %section.row
   -@spaces.each do |space|
     .span4
-      = link_to space do
-        = image_tag space.image_url
+      .m-box
+        = link_to space do
+          = image_tag space.image_url
 
 %section.movie
   %iframe{:width => "420", :height => "315", :src => "http://www.youtube.com/embed/WuPShtmJKbI", :frameborder => "0"}
