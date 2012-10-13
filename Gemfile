@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', :git => 'git://github.com/rails/rails.git', :branch => '3-2-stable'
 gem 'mysql2' # If using mysql in development, this can be outside the production group.
 gem 'kaminari'
+gem "airbrake"
 
 # Omniauth
 gem 'omniauth'

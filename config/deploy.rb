@@ -87,3 +87,5 @@ deploy.task :restart, :roles => :app do
   # Restart Application
   run "touch #{current_path}/tmp/restart.txt"
 end
+        require './config/boot'
+        require 'airbrake/capistrano'
