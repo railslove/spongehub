@@ -13,5 +13,5 @@
   .span6
     = form_tag do |f|
       = label_tag :user_id, 'Add a user to this space'
-      = hidden_field_tag :user_id, nil, { 'data-role' => 'select', :include_blank => true, :class => 'span3' }
+      = hidden_field_tag :user_id, nil, { data: { role: 'select', source: users_path }, class: 'span3' }
       = submit_tag 'Add', class: 'btn btn-primary btn-small'

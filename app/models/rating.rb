@@ -3,7 +3,8 @@ class Rating < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
-  belongs_to :creator, class_name: "User"
+  belongs_to :creator, class_name: 'User'
+  belongs_to :rated, class_name: 'User'
   belongs_to :space
   belongs_to :chore
 

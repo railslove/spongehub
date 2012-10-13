@@ -4,6 +4,14 @@ class SpaceUsersController < ApplicationController
 
   def index
     @users = @space.users
+
+    respond_to do |format|
+      format.html # render view
+      format.json do
+        @users = @users.by_query(params[:q]).page(params[:page]).per(params[:page_limit])
+        render json: @users, callback: params[:callback]
+      end
+    end
   end
 
   def create

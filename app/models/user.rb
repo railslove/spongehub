@@ -15,13 +15,11 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :email
   validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
+  
+  scope :by_query, lambda { |term| where('name LIKE ?', "%#{term}%") }
 
   def remote_image_url
     read_attribute(:remote_image_url).presence || asset_path("fallbacks/default_remote_image.png")
-  end
-  
-  def self.find_by_query(term)
-    self.where('name LIKE ?', "%#{term}%")
   end
 
   def update_identity_email
