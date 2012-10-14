@@ -30,6 +30,6 @@
     = link_to "Take this!", take_space_chore_path(@space, @chore), method: :put, class: "btn btn-primary"
 %p
   Due at:
-  = l(@chore.due_at, format: :short)
+  = l(@chore.due_at, format: :short) if @chore.due_at
 
 = link_to 'Edit', [:edit, @space, @chore], class: "btn"

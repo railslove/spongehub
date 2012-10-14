@@ -33,6 +33,7 @@ group :assets do
   gem 'compass-rails'
   gem 'bootstrap-sass'
   gem 'uglifier', '>= 1.0.3'
+  gem 'jquery-ui-rails'
 end
 
 group :development do

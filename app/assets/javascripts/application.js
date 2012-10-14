@@ -15,7 +15,9 @@
 //= require bootstrap-dropdown
 //= require select2
 //= require moment.min
+//= require jquery.ui.datepicker
 
 //= require flash
 //= require user_select
 //= require datetime_moment
+//= require datepicker_role
