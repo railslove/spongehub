@@ -6,11 +6,11 @@
         - @space.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
+  .m-form-row
     = f.label :name
     = f.text_field :name
-  .field
+  .m-form-row
     = f.label :image
     = f.file_field :image
-  .actions
-    = f.submit 'Save'
+  .m-form-row
+    = f.submit 'Save', class: "m-button"
