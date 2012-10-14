@@ -8,7 +8,7 @@
             = link_to "I can do that", take_space_chore_path(@space, chore), method: :put, class: "m-button_bubble right"
 -else
   .m-bubble
-    -if message
+    -if defined?(message)
       = message
     -else
       Yiieha, currently no chores.
