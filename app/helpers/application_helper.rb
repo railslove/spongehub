@@ -14,4 +14,14 @@ module ApplicationHelper
       (date.day.to_s + chores).html_safe
     end
   end
+
+  def formatted_karma(karma)
+    if karma > 0
+      content_tag(:span, karma, class: 'good')
+    elsif karma < 0
+      content_tag(:span, karma, class: 'bad')
+    else
+      content_tag(:span, karma, class: 'none')
+    end
+  end
 end

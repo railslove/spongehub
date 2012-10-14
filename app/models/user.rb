@@ -15,8 +15,14 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :email
   validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
-  
+
   scope :by_query, lambda { |term| where('name LIKE ?', "%#{term}%") }
+  scope :with_karma, lambda {
+    select('users.*, COALESCE(SUM(ratings.value), 0) as raw_karma').
+      joins('LEFT JOIN ratings ON ratings.rated_id = users.id').
+      group('users.id').
+      order('raw_karma DESC')
+  }
 
   def remote_image_url
     read_attribute(:remote_image_url).presence || asset_path("fallbacks/default_remote_image.png")
@@ -28,6 +34,14 @@ class User < ActiveRecord::Base
     unless identity.blank?
       identity.email = self.email
       identity.save!
+    end
+  end
+
+  def karma
+    if self.respond_to?(:raw_karma)
+      raw_karma.to_i
+    else
+      100
     end
   end
 

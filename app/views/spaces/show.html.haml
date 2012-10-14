@@ -6,10 +6,7 @@
 .row
   .span4
     .m-box
-      %h2 Fame Top 3
-
-    .m-box
-      %h2 Most Recent Fames
+      %h2 Recent Fames
       -if @space.fames.any?
         %ul.unstyled
           -@space.fames.limit(3).each do |fame|
@@ -27,10 +24,7 @@
 
   .span4
     .m-box
-      %h2 Blame Top 3
-
-    .m-box
-      %h2 Most Recent Blames
+      %h2 Recent Blames
       -if @space.blames.any?
         %ul.unstyled
           -@space.blames.limit(3).each do |blame|
@@ -46,7 +40,18 @@
           = f.submit "Blame", class: "btn m-button_blame rating-form--submit"
 
   .span4
-    #chores.m-box
+    .m-box
+      %h2 Space Ranking
+      %ol
+        -@space.users.with_karma.each do |user|
+          %li.m-user
+            = link_to(user.name, user)
+            = image_tag(user.remote_image_url, class: 'm-user--image')
+            %span.m-user--karma= formatted_karma(user.karma)
+
+.row
+  .span8
+    .m-box
       %h2 What to do?
 
       = render "chores/chore_list", chores: @space.chores.untaken
