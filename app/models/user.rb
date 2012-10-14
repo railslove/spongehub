@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
       order('raw_karma DESC')
   }
 
+  def as_json(options = {})
+    super(except: [:image])
+  end
+
   def remote_image_url
     self.image.file.present? && self.image.url(:square) || "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(self.email.to_s)}?d=http://spongehub.net/default_remote_image.png"
   end

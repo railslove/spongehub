@@ -5,7 +5,7 @@
     Createy by
     = link_to @chore.creator.name, @chore.creator
 
-  -if @chore.description
+  -unless @chore.description.blank?
     .well
       %p= simple_format @chore.description
   %p

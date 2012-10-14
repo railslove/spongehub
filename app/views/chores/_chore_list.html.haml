@@ -13,6 +13,6 @@
     -else
       Yiieha, currently no chores.
       .m-bubble--actions
-        = link_to "GO partey!!!", "http://www.ebaumsworld.com/video/watch/81891625/", target: "_blank", class: "m-button_bubble left"
-        or
-        = link_to "Or create a new one", new_space_chore_path(@space), class: "m-button_bubble right"
+        = link_to "GO partey!!!", "http://www.ebaumsworld.com/video/watch/81891625/", target: "_blank", class: "m-button_bubble pull-right"
+        %span.pull-right{style: "margin: 0 10px; line-height: 40px;"} or
+        = link_to "create one", new_space_chore_path(@space), class: "m-button_bubble pull-right"
