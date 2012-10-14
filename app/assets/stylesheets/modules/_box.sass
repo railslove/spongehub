@@ -48,12 +48,20 @@
       padding: $padding
       .m-box_list--item--rank
         +headline-text($huge-headline-font-size, $medium-grey, 1)
-        width: 40px
+        width: 60px
         text-align: center
       .m-box_list--item--rank, .m-box_list--item--text
         height: $huge-headline-font-size
         line-height: $huge-headline-font-size
         float: left
+      .m-box_list--item--text
+        > span
+          display: inline-block
+          vertical-align: top
+        > a
+          max-width: 130px
+          display: inline-block
+          +ellipsis
 
 
   &.fames
