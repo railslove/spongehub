@@ -1,17 +1,19 @@
 = render partial: 'spaces/header'
 
-%h2 Members
+.l-single-column.m-box.padding
+  %h1.m-headline_inverted= "Members (#{@space.users.count})"
 
-.row
-  .span6
-    %ul#members
-      - @users.each do |user|
-        %li.m-user
-          = image_tag(user.remote_image_url)
-          = user.name
-          = link_to('remove', [@space, user], method: :delete)
-  .span6
-    = form_tag do |f|
-      = label_tag :user_id, 'Add a user to this space'
-      = hidden_field_tag :user_id, nil, { data: { role: 'select', source: users_path }, class: 'span3' }
-      = submit_tag 'Add', class: 'btn btn-primary btn-small'
+  = form_tag do |f|
+    = label_tag :user_id, 'Add a user to this space'
+    = hidden_field_tag :user_id, nil, { data: { role: 'select', source: users_path }, class: 'span3' }
+    = submit_tag 'Add', class: 'btn btn-primary btn-small'
+
+  %ul#members.unstyled
+    - @users.each do |user|
+      %li{style: "margin-bottom: 10px"}
+        = image_tag user.remote_image_url, class: "m-user-image"
+        = user.name
+        = link_to('remove', [@space, user], method: :delete)
+
+  .m-box--actions
+    = link_to 'Back', @space

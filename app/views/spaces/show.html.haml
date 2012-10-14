@@ -87,8 +87,19 @@
   .l-column-3--span2-column
     %h2.m-headline
       What else needs to be done?
-      = link_to "Chores in Calendar view", space_chores_path(@space), class: "m-headline--link pull-right"
 
-    = render "chores/chore_list", chores: @space.chores.untaken
+    = render "chores/chore_list", chores: @space.chores.upcoming.undone.untaken
 
-    = link_to "Chores in Calendar view", space_chores_path(@space)
+  .l-column-3--span2-column
+    %h2.m-headline
+      Chores already taken by others:
+
+    = render "chores/chore_list", chores: @space.chores.upcoming.undone.taken, message: "Nothing done yet"
+
+  .l-column-3--span2-column
+    %h2.m-headline
+      Completed chores:
+
+    = render "chores/chore_list", chores: @space.chores.done, message: "Nothing done yet"
+
+    = link_to "Create new chore", new_space_chore_path(@space), class: 'm-button'

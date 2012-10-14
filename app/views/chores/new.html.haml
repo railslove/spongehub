@@ -1,17 +1,18 @@
-.l-row
-  %ul.breadcrumb
-    %li
-      = link_to "Home", root_path
-      %span.divider= ">"
-    %li
-      Space:
-      = link_to @space.name, @space
-      %span.divider= ">"
-    %li
-      = link_to "Chores", [@space, :chores]
-      %span.divider= ">"
-    %li.active
-      New
+-if false
+  .l-row
+    %ul.breadcrumb
+      %li
+        = link_to "Home", root_path
+        %span.divider= ">"
+      %li
+        Space:
+        = link_to @space.name, @space
+        %span.divider= ">"
+      %li
+        = link_to "Chores", [@space, :chores]
+        %span.divider= ">"
+      %li.active
+        New
 
 .l-single-column.m-box
   %h1.m-headline_inverted.with-side-margin New chore
@@ -19,4 +20,4 @@
   = render 'form'
 
   .m-box--actions
-    = link_to 'Back', [@space, :chores]
+    = link_to 'Back', @space

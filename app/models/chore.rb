@@ -11,10 +11,13 @@ class Chore < ActiveRecord::Base
   validates :creator_id, presence: true
 
   scope :untaken, where("taker_id IS NULL")
+  scope :taken, where("taker_id IS NOT NULL")
   scope :upcoming, where('DATE(due_at) >= DATE(NOW()) OR due_at IS NULL')
   scope :dateless, where("due_at IS NULL")
   scope :for_month, ->(date) { where("due_at BETWEEN DATE('#{date.beginning_of_month}') AND DATE('#{date.end_of_month}')") }
   scope :random, order('RAND()')
+  scope :done, where("done_at IS NOT NULL")
+  scope :undone, where("done_at IS NULL")
 
 
   def self.suggested
@@ -43,6 +46,10 @@ class Chore < ActiveRecord::Base
 
   def done?
     !self.done_at.blank?
+  end
+
+  def untaken?
+    self.taker.blank?
   end
 
 end

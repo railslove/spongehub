@@ -2,14 +2,17 @@
   %ul.chore-list.unstyled
     -chores.take(3).each do |chore|
       %li.chore-list--item.m-bubble
-        = chore.title
-        -if current_user
+        = link_to chore.title, [@space, chore]
+        -if current_user && chore.untaken?
           .m-bubble--actions
             = link_to "I can do that", take_space_chore_path(@space, chore), method: :put, class: "m-button_bubble right"
 -else
   .m-bubble
-    Yiieha, currently no chores.
-    .m-bubble--actions
-      = link_to "GO partey!!!", "http://www.ebaumsworld.com/video/watch/81891625/", target: "_blank", class: "m-button_bubble left"
-      or
-      = link_to "Or create a new one", new_space_chore_path(@space), class: "m-button_bubble right"
+    -if defined?(message)
+      = message
+    -else
+      Yiieha, currently no chores.
+      .m-bubble--actions
+        = link_to "GO partey!!!", "http://www.ebaumsworld.com/video/watch/81891625/", target: "_blank", class: "m-button_bubble left"
+        or
+        = link_to "Or create a new one", new_space_chore_path(@space), class: "m-button_bubble right"
