@@ -1,8 +1,21 @@
 .m-input
-
+  margin-bottom: 0
 
 .m-input_textarea
   @extend .m-input
+  width: 100%
+
+  .m-input_file
+    @extend .m-input
+    width: 100%
 
 .m-form-row
   margin: $margin
+
+  &.small-margin
+    margin: $padding
+
+  &.full-width
+    margin-right: 0
+    margin-left: 0
+    overflow: hidden

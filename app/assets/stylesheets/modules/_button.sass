@@ -27,3 +27,24 @@ $button-height: 40px
   line-height: $button-height
   &:hover
     color: $dark-text-color
+
+
+.m-button_fame, .m-button_blame
+  @extend .m-button
+  text-transform: uppercase
+  +headline-text($medium-headline-font-size, $white)
+  border: none
+
+  &:hover
+    +background-image(none)
+    color: $white
+
+.m-button_fame
+  background-color: $dark-fame-color
+  &:hover
+    background-color: $fame-color
+
+.m-button_blame
+  background-color: $dark-blame-color
+  &:hover
+    background-color: $blame-color

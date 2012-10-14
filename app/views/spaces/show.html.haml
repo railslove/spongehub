@@ -9,46 +9,59 @@
     .m-bubble--actions
       = link_to "Oh, yes!", take_space_chore_path(@space, @suggested_chore), method: :put, class: "m-button_bubble right"
 
-.row
-  .span4
-    .m-box
-      %h2 Recent Fames
+.l-column-3
+  -# fames
+  .l-column-3--column
+    .m-box_list.fames
+      %h2.m-box--title Recent Fames
       -if @space.fames.any?
         %ul.unstyled
           -@recent_fames.each do |fame|
-            %li.well
+            %li.m-box_list--item
               = formatted_rating(fame)
               .m-moment{ 'data-role' => 'moment' }= fame.created_at.to_s(:db)
 
+    -if current_user
+      = form_for @space.ratings.new(value: 1), url: space_ratings_path(@space), method: :post, html: {class: "rating-form_fame"} do |f|
+        = f.hidden_field :value
 
-      -if current_user
-        = form_for @space.ratings.new(value: 1), url: space_ratings_path(@space), method: :post, html: {class: "rating-form_fame"} do |f|
-          = f.hidden_field :value
+        .rating-form--title Write a fame:
+
+        .m-form-row.full-width.small-margin
           = f.text_area :text, placeholder: "I like ... (fame person with @name)", class: "m-input_textarea rating-form--textarea"
-          = f.label :image
-          = f.file_field :image
-          = f.submit "Fame", class: "m-button rating-form--submit"
 
-  .span4
-    .m-box
-      %h2 Recent Blames
+        .m-form-row.full-width.small-margin
+          = f.file_field :image, class: "m-input_file"
+
+        = f.submit "Fame!", class: "m-button_fame rating-form--submit"
+
+  -# blames
+  .l-column-3--column
+    .m-box_list.blames
+      %h2.m-box--title Recent Blames
       -if @space.blames.any?
         %ul.unstyled
           -@recent_blames.each do |blame|
-            %li.well
+            %li.m-box_list--item
               = formatted_rating(blame)
               .m-moment{ 'data-role' => 'moment' }= blame.created_at.to_s(:db)
 
-      -if current_user
-        = form_for @space.ratings.new(value: -1), url: space_ratings_path(@space), method: :post, html: {class: "rating-form_blame"} do |f|
-          = f.hidden_field :value
+    -if current_user
+      = form_for @space.ratings.new(value: -1), url: space_ratings_path(@space), method: :post, html: {class: "rating-form_blame"} do |f|
+        = f.hidden_field :value
+
+        .rating-form--title Write a blame:
+
+        .m-form-row.full-width.small-margin
           = f.text_area :text, placeholder: "It's a mess ... (blame person with @name)", class: "m-input_textarea rating-form--textarea"
-          = f.label :image
-          = f.file_field :image
-          = f.submit "Blame", class: "m-button rating-form--submit"
+
+        .m-form-row.full-width.small-margin
+          = f.file_field :image, class: "m-input_file"
+
+        = f.submit "Blame!", class: "m-button_blame rating-form--submit"
 
   -# space ranking
-  .l-column-3--column.m-box_list.ordered.last
+  .l-column-3--column.m-box_list.ordered
     %h2.m-box--title Space Ranking
     %ol.unstyled
       -@ranked_users.each_with_index do |user, index|
