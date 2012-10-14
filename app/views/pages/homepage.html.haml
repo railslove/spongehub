@@ -22,7 +22,7 @@
     - if current_user
       = link_to "Create a space!", [:new, :space], class: "sign-up--link"
     - else
-      = link_to "Sign up!", root_path, class: "sign-up--link"
+      = link_to "Sign up!", new_identity_url, class: "sign-up--link"
 
   .wischhand
 
