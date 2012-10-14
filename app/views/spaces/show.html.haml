@@ -9,8 +9,9 @@
       %h2 Recent Fames
       -if @space.fames.any?
         %ul.unstyled
-          -@space.fames.limit(3).each do |fame|
+          -@recent_fames.each do |fame|
             %li.well
+              = link_to(fame.rated.name, fame.rated) if fame.rated.present?
               = fame.text
               .m-moment{ 'data-role' => 'moment' }= fame.created_at.to_s(:db)
 
@@ -27,8 +28,9 @@
       %h2 Recent Blames
       -if @space.blames.any?
         %ul.unstyled
-          -@space.blames.limit(3).each do |blame|
+          -@recent_blames.each do |blame|
             %li.well
+              = link_to(blame.rated.name, blame.rated) if blame.rated.present?
               = blame.text
               .m-moment{ 'data-role' => 'moment' }= blame.created_at.to_s(:db)
 
@@ -43,7 +45,7 @@
     .m-box
       %h2 Space Ranking
       %ol
-        -@space.users.with_karma.each do |user|
+        -@ranked_users.each do |user|
           %li.m-user
             = link_to(user.name, user)
             = image_tag(user.remote_image_url, class: 'm-user--image')

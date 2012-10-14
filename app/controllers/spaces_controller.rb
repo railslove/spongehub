@@ -13,6 +13,9 @@ class SpacesController < ApplicationController
 
   def show
     @space = Space.find(params[:id])
+    @ranked_users = @space.users.with_karma
+    @recent_blames = @space.blames.limit(5).order('created_at DESC')
+    @recent_fames = @space.fames.limit(5).order('created_at DESC')
 
     respond_to do |format|
       format.html # show.html.erb
