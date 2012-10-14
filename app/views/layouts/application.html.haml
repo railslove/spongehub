@@ -10,7 +10,6 @@
   %body{class: [controller_name, action_name, (current_user ? "current_user" : nil)]}
     .voteforus
       = link_to(image_tag("voteforus.png"), "http://railsrumble.com/entries/47-boom-chicka-wow-wow")
-    -flash[:alert] = "Some longer flash message for better UX"
 
     -if flash[:alert]
       .flash_alert{data: {role: "flash", type: 'alert'}}
@@ -67,15 +66,19 @@
           .team
             by Team
             = link_to "BoomChickaWowWow", "http://railsrumble.com/entries/47-boom-chicka-wow-wow", target: "_blank"
-        %ul.creators.unstyled
+        %ul.creators.unstyled{data: {role: 'boomchickwowwow'}}
           %li{title: "Boom aka. Jan"}
             = link_to(image_tag("creators/koos.jpg"), "http://twitter.com/koos")
+            .creators--text= "Boom"
           %li{title: "Chicka aka. Liane"}
             = link_to(image_tag("creators/liane_thoennes.jpg"), "http://twitter.com/liane_thoennes")
+            .creators--text= "Chicka"
           %li{title: "Wow aka. Jakob"}
             = link_to(image_tag("creators/jkwebs.jpg"), "http://twitter.com/jkwebs")
+            .creators--text= "Wow"
           %li{title: "Wow aka. Max"}
             = link_to(image_tag("creators/namxam.jpg"), "http://twitter.com/namxam")
+            .creators--text= "Wow"
 
         .twitter
           Follow
