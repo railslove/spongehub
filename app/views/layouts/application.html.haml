@@ -38,9 +38,10 @@
                 %ul.dropdown-menu
                   - current_user.spaces.each do |space|
                     %li= link_to space.name, space
+            -#%li
+              =# link_to image_tag(current_user.remote_image_url, width: 25, height: 25), user_path(current_user), class: 'm-button'
             %li
               = link_to "Sign out", signout_path, class: "m-button"
-              = link_to(image_tag(current_user.remote_image_url), user_path(current_user))
           -else
             %li.dropdown.m-signin
               = link_to "#", class: "dropdown-toggle m-button", data: { toggle: 'dropdown' } do
