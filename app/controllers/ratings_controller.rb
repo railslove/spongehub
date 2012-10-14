@@ -2,7 +2,7 @@ class RatingsController < ApplicationController
 
   before_filter :authentication_required
   before_filter :load_and_ensure_space
-  before_filter :check_space_memberships
+  before_filter :check_space_membership
 
   def create
     @rating = @space.ratings.new(params[:rating], :creator => current_user)
