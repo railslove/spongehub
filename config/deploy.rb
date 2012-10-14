@@ -72,6 +72,10 @@ after 'deploy:update_code' do
   # Setup Configuration
   run "cp #{shared_path}/config/database.yml #{release_path}/config/database.yml"
   run "cp #{shared_path}/config/settings.yml #{release_path}/config/settings.yml"
+
+  # Symlink uploads
+  run "ln -s #{shared_path}/system/uploads #{release_path}/public/uploads"
+
   # Compile Assets
   run "cd #{release_path}; RAILS_ENV=production bundle exec rake assets:precompile"
 end

@@ -3,11 +3,10 @@
   .l-twin-columns--column.m-box.clementine
     .m-headline_inverted Sign in
 
-    = form_tag "??" do
-
+    = form_tag '/auth/identity/callback' do
       .m-form-row
-        = label_tag :login
-        = text_field_tag :login
+        = label_tag :auth_key, 'Email'
+        = text_field_tag :auth_key
 
       .m-form-row
         = label_tag :password
