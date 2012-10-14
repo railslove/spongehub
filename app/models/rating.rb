@@ -17,10 +17,8 @@ class Rating < ActiveRecord::Base
   protected
 
   def match_rated_token
-    if self.rated_id.blank? && token = self.text.match(/@([^\W]+)/)
-      if user = self.space.users.by_exact_query(token[1]).first
-        self.rated_id = user.id
-      end
+    if self.rated_id.blank? && matched_user = TextUserTokenizer.new(text, space.users).unique_match
+      self.rated_id = matched_user.id
     end
   end
 end

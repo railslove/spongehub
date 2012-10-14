@@ -29,8 +29,11 @@ module ApplicationHelper
     body = h(rating.text)
     if user = rating.rated
       user_link = link_to("@#{user.name}", user)
-      body = if body.match(/@#{user.name}/i)
-        body.gsub(/@#{user.name}/i, user_link)
+
+      token = TextUserTokenizer.new(rating.text, [rating.rated]).unique_match_token
+
+      body = if body.match(/@#{token}/)
+        body.gsub(/@#{token}/, user_link)
       else
         user_link + ' ' + body
       end
