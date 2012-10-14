@@ -1,0 +1,22 @@
+.footer
+  background-image: image-url("backgrounds/footer_dreck.png")
+  background-position: center top
+  text-align: center
+  padding-top: 30px
+  height: 318px - 30px
+
+  .made-with
+    +special-text
+    margin-bottom: $margin*2
+    > a
+      color: $pink
+      text-decoration: underline
+      &:hover
+        text-decoration: none
+
+  .creators
+    > li
+      display: inline-block
+      margin-right: $margin*2
+      &:last-child
+        margin-right: 0px
