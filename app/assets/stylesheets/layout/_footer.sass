@@ -6,9 +6,11 @@
   height: 318px - 30px
 
   .made-with
-    +special-text
+    +special-text()
     margin-bottom: $margin
-    > a
+    .team
+      +special-text(20px, $pink)
+    a
       color: $pink
       text-decoration: underline
       &:hover
@@ -20,3 +22,7 @@
       margin-right: $margin
       &:last-child
         margin-right: 0px
+
+  .twitter
+    margin-top: $margin
+    +headline-text($small-headline-font-size)

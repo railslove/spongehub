@@ -15,12 +15,12 @@ class ApplicationController < ActionController::Base
   end
 
   def authentication_required
-    redirect_to :root, alert: "Oh, oh! You don't wanna go there!" unless current_user
+    redirect_to :root, alert: "Oh, oh! You don't wanna go there, yet! First sign in." unless current_user
   end
 
   def check_space_membership
     if current_user.blank? || !@space.member?(current_user)
-      redirect_to(@space, alert: "Oh, oh! What are you trying to do?!") and return
+      redirect_to(@space, alert: "Oh, oh! What are you trying to do?!  You need to be a member of that space!") and return
     end
   end
 

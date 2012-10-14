@@ -10,14 +10,16 @@
   %body{class: [controller_name, action_name, (current_user ? "current_user" : nil)]}
     .voteforus
       = link_to(image_tag("voteforus.png"), "http://railsrumble.com/entries/47-boom-chicka-wow-wow")
+    -flash[:alert] = "Some longer flash message for better UX"
 
     -if flash[:alert]
-      .flash_alert{data: {role: "flash"}}
+      .flash_alert{data: {role: "flash", type: 'alert'}}
         .flash--text= flash[:alert]
+        = link_to "X", "#", class: "m-button flash--close", data: {role: 'close'}
     -elsif flash[:notice]
-      .flash_notice{data: {role: "flash"}}
+      .flash_notice{data: {role: "flash", type: 'notice'}}
         .flash--text= flash[:notice]
-
+        = link_to "X", "#", class: "m-button flash--close", data: {role: 'close'}
 
     .container
       %header.header
@@ -62,9 +64,9 @@
           for&nbsp;
           = link_to "Rails Rumble 2012", "http://railsrumble.com/entries/47-boom-chicka-wow-wow", target: "_blank"
           %br
-          by Team
-          = link_to "BoomChickaWowWow", "http://railsrumble.com/entries/47-boom-chicka-wow-wow", target: "_blank"
-          =# link_to "@spongehub_", "http://twitter.com/spongehub_", target: "_blank"
+          .team
+            by Team
+            = link_to "BoomChickaWowWow", "http://railsrumble.com/entries/47-boom-chicka-wow-wow", target: "_blank"
         %ul.creators.unstyled
           %li{title: "Boom aka. Jan"}
             = link_to(image_tag("creators/koos.jpg"), "http://twitter.com/koos")
@@ -74,6 +76,11 @@
             = link_to(image_tag("creators/jkwebs.jpg"), "http://twitter.com/jkwebs")
           %li{title: "Wow aka. Max"}
             = link_to(image_tag("creators/namxam.jpg"), "http://twitter.com/namxam")
+
+        .twitter
+          Follow
+          = link_to "@spongehub_", "http://twitter.com/spongehub_", target: "_blank"
+          on Twitter
 
     = javascript_include_tag "application"
 
