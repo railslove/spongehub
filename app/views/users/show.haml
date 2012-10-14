@@ -1,50 +1,50 @@
-.hero-unit.m-hero
-  %h1.m-hero--title
-    = @user.name
-    = image_tag(@user.remote_image_url)
-
-.m-box
+.m-bubble_hero
+  = image_tag(@user.remote_image_url)
   Hello World! My name is
   = @user.name
   = link_to 'Edit', edit_user_path(@user) if @user == current_user
-.row
-  .span3
-    %h2 My spaces
-    - if @user.spaces.blank?
-      Currently I am not a part of a space
-    - else
-      %ul
-      - @user.spaces.each do |space|
-        %li= link_to(space.name, space)
-  .span3
-    %h2 My Blames
-    - if @user.blames.blank?
-      This user wasn't blamed yet
-    - else
-      %ul
-      - @user.blames.each do |blame|
-        %li
-          = blame.space.name
-          = blame.text
-          = blame.chore
-  .span3
-    %h2 My Fames
-    - if @user.fames.blank?
-      This user wasn't famed yet
-    - else
-      %ul
-      - @user.fames.each do |fame|
-        %li
-          = fame.space.name
-          = fame.text
-          = fame.chore
-  .span3
-    %h2 My Chores
-    - if @user.chores.blank?
-      This user has no chores
-    - else
-      %ul
-      - @user.chores.each do |chore|
-        %li
-          = chore.space.name
-          = chore.title
+
+.l-column-3
+  .l-column-3--column.m-box_list
+    .m-box--title Spaces
+    %ul.unstyled
+      - if @user.spaces.blank?
+        %li.m-box_list--item Currently I am not a part of a space
+      - else
+        - @user.spaces.each do |space|
+          %li.m-box_list--item
+            = link_to(space.name, space)
+  .l-column-3--column.m-box_list
+    .m-box--title Blames
+    %ul.unstyled
+      - if @user.blames.blank?
+        %li.m-box_list--item This user wasn't blamed yet
+      - else
+        - @user.blames.each do |blame|
+          %li.m-box_list--item
+            = link_to blame.space.name, blame.space
+            = ":"
+            = blame.text
+            = blame.chore
+  .l-column-3--column.m-box_list.last
+    .m-box--title Fames
+    %ul.unstyled
+      - if @user.fames.blank?
+        %li.m-box_list--item This user wasn't famed yet
+      - else
+        - @user.fames.each do |fame|
+          %li.m-box_list--item
+            = link_to fame.space.name, fame.space
+            = ":"
+            = fame.text
+            = fame.chore
+  .l-column-3--column.m-box_list
+    .m-box--title Chores
+    %ul.unstyled
+      - if @user.chores.blank?
+        %li.m-box_list--item This user has no chores
+      - else
+        - @user.chores.each do |chore|
+          %li.m-box_list--item
+            = "#{chore.space.name}:"
+            = link_to chore.title, [chore.space, chore]

@@ -1,7 +1,9 @@
-%h1 Editing user
+.l-single-column.m-box
+  %h1.m-headline_inverted.with-side-margin Editing user
 
-= render 'form'
+  = render 'form'
 
-= link_to 'Show', @user
-\|
-= link_to 'Back', users_path
+  .m-box--actions
+    = link_to 'Show', @user
+    \|
+    = link_to 'Back', users_path

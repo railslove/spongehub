@@ -1,7 +1,25 @@
-%h1 Editing chore
+.l-row
+  %ul.breadcrumb
+    %li
+      = link_to "Home", root_path
+      %span.divider= ">"
+    %li
+      Space:
+      = link_to @space.name, @space
+      %span.divider= ">"
+    %li
+      Chore:
+      = link_to @chore.title, [@space, @chore]
+      %span.divider= ">"
+    %li.active
+      Edit
 
-= render 'form'
+.l-single-column.m-box
+  %h1.m-headline_inverted.with-side-margin Editing chore
 
-= link_to 'Show', [@space, @chore]
-\|
-= link_to 'Back', [@space, :chores]
+  = render 'form'
+
+  .m-box--actions
+    = link_to 'Show', [@space, @chore]
+    \|
+    = link_to 'Back', [@space, :chores]

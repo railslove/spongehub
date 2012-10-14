@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-dropdown
+//= require bootstrap-modal
 //= require select2
 //= require moment.min
 //= require jquery.ui.datepicker

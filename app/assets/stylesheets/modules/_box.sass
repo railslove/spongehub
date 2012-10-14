@@ -26,6 +26,9 @@
 .m-box_list
   @extend .m-box
 
+  > ol, > ul
+    margin: 0
+
   .m-box--title
     +headline-text($huge-headline-font-size, $medium-grey, .9)
     border-bottom: $margin solid $medium-grey

@@ -1,13 +1,14 @@
-%ul.breadcrumb
-  %li
-    = link_to "Home", root_path
-    %span.divider= ">"
-  %li
-    Space:
-    = link_to @space.name, @space
-    %span.divider= ">"
-  %li.active
-    Chores
+.l-row
+  %ul.breadcrumb
+    %li
+      = link_to "Home", root_path
+      %span.divider= ">"
+    %li
+      Space:
+      = link_to @space.name, @space
+      %span.divider= ">"
+    %li.active
+      Chores
 
 .page-header
   %h1 Chores

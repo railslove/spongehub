@@ -19,7 +19,19 @@
           -@recent_fames.each do |fame|
             %li.m-box_list--item
               = formatted_rating(fame)
+              -if fame.image.file.present?
+                = link_to "##{dom_id(fame)}", role: 'button', data: {toggle: 'modal'} do
+                  .m-icon.camera
+
               .m-moment{ 'data-role' => 'moment' }= fame.created_at.to_s(:db)
+
+              -if fame.image.present?
+                .modal.hide.fade{id: dom_id(fame)}
+                  .modal-header
+                    %button{type: "button", class: "close", data: {dismiss: "modal", aria: {hidden: "true"}}} &times;
+                    %h3= "Image: #{fame.text}"
+                  .modal-body
+                    = image_tag fame.image_url
 
     -if current_user
       = form_for @space.ratings.new(value: 1), url: space_ratings_path(@space), method: :post, html: {class: "rating-form_fame"} do |f|
