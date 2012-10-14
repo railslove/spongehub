@@ -16,6 +16,7 @@ class SpacesController < ApplicationController
     @ranked_users = @space.users.with_karma
     @recent_blames = @space.blames.limit(5).order('created_at DESC')
     @recent_fames = @space.fames.limit(5).order('created_at DESC')
+    @suggested_chore = @space.chores.suggested.first
 
     respond_to do |format|
       format.html # show.html.erb
