@@ -11,7 +11,7 @@
         %ul.unstyled
           -@recent_fames.each do |fame|
             %li.well
-              = link_to(fame.rated.name, fame.rated) if fame.rated.present?
+              = link_to("@#{fame.rated.name}", fame.rated) if fame.rated.present?
               = fame.text
               .m-moment{ 'data-role' => 'moment' }= fame.created_at.to_s(:db)
 
@@ -30,7 +30,7 @@
         %ul.unstyled
           -@recent_blames.each do |blame|
             %li.well
-              = link_to(blame.rated.name, blame.rated) if blame.rated.present?
+              = link_to("@#{blame.rated.name}", blame.rated) if blame.rated.present?
               = blame.text
               .m-moment{ 'data-role' => 'moment' }= blame.created_at.to_s(:db)
 
