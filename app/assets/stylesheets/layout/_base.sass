@@ -2,6 +2,7 @@ body
   +background-image(linear-gradient($lightest-grey, $white))
   padding-top: $padding/2
   padding-bottom: $padding*4
+  position: relative
 
 .container
   background-color: $light-grey
@@ -33,3 +34,31 @@ body
   top: -85px
   left: 110px
   line-height: $medium-headline-font-size * 1.5
+
+%flash
+  display: none
+  position: absolute
+  bottom: 0px
+  right: 100px
+  width: 679px
+  height: 533px
+  z-index: 666
+  .flash--text
+    +headline-text($big-headline-font-size, $white, 1.4)
+    text-transform: uppercase
+    width: 250px
+    height: 150px
+    margin-top: 75px
+    margin-left: 80px
+    text-align: center
+
+.flash_notice
+  @extend %flash
+  background-image: image-url("flash_notice.png")
+  .flash--text
+    color: $dark-violet
+
+.flash_alert
+  @extend %flash
+  background-image: image-url("flash_alert.png")
+

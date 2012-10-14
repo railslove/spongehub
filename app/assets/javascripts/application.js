@@ -16,5 +16,6 @@
 //= require select2
 //= require moment.min
 
+//= require flash
 //= require user_select
 //= require datetime_moment

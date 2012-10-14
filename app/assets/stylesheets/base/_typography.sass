@@ -18,10 +18,10 @@ $big-headline-font-size: 25px
   font-weight: normal
   color: $color
 
-@mixin headline-text($size: $medium-headline-font-size, $color: $dark-text-color)
+@mixin headline-text($size: $medium-headline-font-size, $color: $dark-text-color, $line-height-factor: 1.2)
   font-family: "Avenir Next LT W01 Bold"
   font-size: $size
-  line-height: $size
+  line-height: $size * $line-height-factor
   font-weight: normal
   color: $color
 
