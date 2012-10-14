@@ -17,7 +17,7 @@ Rumble12::Application.routes.draw do
 
   resources :identities
   get "pages/homepage"
-  get "pages/about"
+  match "about", to: 'pages#about', as: 'about'
 
   resources :users
 
