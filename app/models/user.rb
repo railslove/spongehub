@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
   include Sprockets::Helpers::RailsHelper
   include Sprockets::Helpers::IsolatedHelper
 
-  attr_accessible :name, :email
+  attr_accessible :name, :email, :image
+  mount_uploader :image, ImageUploader
 
   has_many :chores, dependent: :destroy, foreign_key: "taker_id"
   has_many :ratings, dependent: :destroy
@@ -26,7 +27,7 @@ class User < ActiveRecord::Base
   }
 
   def remote_image_url
-    read_attribute(:remote_image_url).presence || asset_path("fallbacks/default_remote_image.png")
+    self.image.file.present? && self.image.url || read_attribute(:remote_image_url).presence || asset_path("fallbacks/default_remote_image.png")
   end
 
   def update_identity_email
