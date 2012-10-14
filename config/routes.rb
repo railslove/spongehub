@@ -25,6 +25,7 @@ Rumble12::Application.routes.draw do
     resources :chores do
       member do
         put :take
+        put :done        
       end
     end
     resources :ratings

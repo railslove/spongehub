@@ -5,9 +5,7 @@ class ChoresController < ApplicationController
 
   def index
     @chores = @space.chores.all
-
     @month_chores = @space.chores.for_month(Date.today).group_by{ |chore| chore.due_at.to_date }
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @chores }
@@ -16,7 +14,6 @@ class ChoresController < ApplicationController
 
   def show
     @chore = @space.chores.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @chore }
@@ -25,7 +22,6 @@ class ChoresController < ApplicationController
 
   def new
     @chore = @space.chores.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @chore }
@@ -67,15 +63,30 @@ class ChoresController < ApplicationController
 
   def take
     @chore = @space.chores.find(params[:id])
-
     @chore.taker = current_user
-
     respond_to do |format|
       if @chore.save
         format.html { redirect_to [@space, @chore], notice: 'Chore was successfully taken.' }
         format.json { head :no_content }
       else
         format.html { redirect_to [@space, @chore], alert: 'Error taking chore: #{@chore.errors.full_message}' }
+        format.json { render json: @chore.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def done
+    @chore = @space.chores.find(params[:id])
+    @chore.done_at = Time.now
+    respond_to do |format|
+      if @chore.save
+        rating = @chore.ratings.build(params[:rating])
+        rating.space = @space
+        rating.save!
+        format.html { redirect_to [@space, @chore], notice: "Wow! You did a chore! A big fame on that! And a big blame for all others!"}
+        format.json { head :no_content }
+      else
+        format.html { redirect_to [@space, @chore], alert: 'Error mark chore as done: #{@chore.errors.full_message}' }
         format.json { render json: @chore.errors, status: :unprocessable_entity }
       end
     end

@@ -4,6 +4,7 @@ class Chore < ActiveRecord::Base
   belongs_to :creator, class_name: 'User'
   belongs_to :taker, class_name: 'User'
   belongs_to :space
+  has_many :ratings
 
   validates :title, presence: true
   validates :space_id, presence: true
@@ -38,6 +39,10 @@ class Chore < ActiveRecord::Base
     end
 
     scope
+  end
+
+  def done?
+    !self.done_at.blank?
   end
 
 end

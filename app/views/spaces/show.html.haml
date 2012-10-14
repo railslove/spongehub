@@ -75,8 +75,8 @@
   .l-column-3--span2-column
     %h2.m-headline
       What else needs to be done?
-      = link_to "Calendar view", space_chores_path(@space), class: "m-headline--link pull-right"
+      = link_to "Chores in Calendar view", space_chores_path(@space), class: "m-headline--link pull-right"
 
     = render "chores/chore_list", chores: @space.chores.untaken
 
-    = link_to "Calendar view", space_chores_path(@space)
+    = link_to "Chores in Calendar view", space_chores_path(@space)

@@ -9,10 +9,8 @@
   %li.active
     Chore:
     = @chore.title
-
 .page-header
   %h1= @chore.title
-
 %p
   Createy by
   = link_to @chore.creator.name, @chore.creator
@@ -31,5 +29,31 @@
 %p
   Due at:
   = l(@chore.due_at, format: :short) if @chore.due_at
-
-= link_to 'Edit', [:edit, @space, @chore], class: "btn"
+%p
+  - if @chore.taker.present?
+    - if @chore.done?
+      This chore is done!
+    - else
+      Did
+      = @chore.taker.name 
+      do his job right?
+      %br  
+      = form_for @chore, url: done_space_chore_path(@space, @chore), method: :put, html: {class: "rating-form_fame"} do |f|
+        = hidden_field_tag "rating[value]", 1
+        .rating-form--title High fame on that:
+        .m-form-row.full-width.small-margin
+          = text_area_tag "rating[text]", "I like ... (fame person with @name)", class: "m-input_textarea rating-form--textarea"
+        .m-form-row.full-width.small-margin
+          =# file_field_tag :rating, :image, class: "m-input_file"
+        = f.submit "Fame!", class: "m-button_fame rating-form--submit"
+      %br
+      = form_for @chore, url: done_space_chore_path(@space, @chore), method: :put, html: {class: "rating-form_blame"} do |f|
+        = hidden_field_tag "rating[value]", -1
+        .rating-form--title A very lowww five on THAT:
+        .m-form-row.full-width.small-margin
+          = text_area_tag "rating[text]", "It's a mess ... (blame person with @name)", class: "m-input_textarea rating-form--textarea"
+        .m-form-row.full-width.small-margin
+          =# file_field_tag :rating, :image, class: "m-input_file"
+        = f.submit "Blame!", class: "m-button_blame rating-form--submit"
+- unless @chore.done?
+  = link_to 'Edit', [:edit, @space, @chore], class: "btn"

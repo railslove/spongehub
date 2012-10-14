@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+  before_filter :authentication_required, :except => [:show, :index]
+
+
   def show
     @user = User.find(params[:id])
   end

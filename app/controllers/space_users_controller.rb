@@ -1,5 +1,6 @@
 class SpaceUsersController < ApplicationController
 
+  before_filter :authentication_required
   before_filter :load_and_ensure_space
 
   def index
