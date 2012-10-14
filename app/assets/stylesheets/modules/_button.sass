@@ -1,4 +1,4 @@
-// only twitter overrides until we have our complete own button module
+$button-height: 40px
 
 .m-button
   display: inline-block
@@ -6,8 +6,8 @@
   +border-radius
   +fliesstext($small-headline-font-size, $primary-text-color)
   font-weight: bold
-  line-height: 40px
-  height: 40px
+  line-height: $button-height
+  height: $button-height
   padding: 0 $padding*1.5
   text-transform: uppercase
   background-color: $white
@@ -17,12 +17,13 @@
     text-decoration: none
     +background-image(linear-gradient($white, $light-grey))
 
-input.m-button
+  &.right
+    float: right
 
-
-.m-button_blame
-  border-color: $blame-color
-  color: $blame-color
-
+.m-button_bubble
+  @extend .m-button
+  border: 0
+  +headline-text($big-headline-font-size)
+  line-height: $button-height
   &:hover
-    color: $blame-color
+    color: $dark-text-color

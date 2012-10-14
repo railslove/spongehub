@@ -1,0 +1,20 @@
+// speech bubble
+
+.m-bubble
+  +border-radius
+  +clearfix
+  background-color: $dark-violet
+  color: $white
+  padding: $margin
+  margin: 0
+  +headline-text($big-headline-font-size, $white, 1.1)
+  text-transform: uppercase
+  margin-bottom: $margin*2
+
+  .m-bubble--actions
+    margin-top: $margin
+
+.m-bubble_hero
+  @extend .m-bubble
+  margin: 0px $margin*3
+  margin-bottom: $margin*2

@@ -1,9 +1,13 @@
 = render partial: 'spaces/header'
 
 - if @suggested_chore
-  .m-box
+  .m-bubble_hero
+    = "Hi #{current_user.name}!" if current_user
+    What about doing this:
+    %br
     = @suggested_chore.title
-    = link_to "Oh, yes!", take_space_chore_path(@space, @suggested_chore), method: :put, class: "btn"
+    .m-bubble--actions
+      = link_to "Oh, yes!", take_space_chore_path(@space, @suggested_chore), method: :put, class: "m-button_bubble right"
 
 .row
   .span4
@@ -23,7 +27,7 @@
           = f.text_area :text, placeholder: "I like ... (fame person with @name)", class: "m-input_textarea rating-form--textarea"
           = f.label :image
           = f.file_field :image
-          = f.submit "Fame", class: "btn m-button rating-form--submit"
+          = f.submit "Fame", class: "m-button rating-form--submit"
 
   .span4
     .m-box
@@ -41,23 +45,25 @@
           = f.text_area :text, placeholder: "It's a mess ... (blame person with @name)", class: "m-input_textarea rating-form--textarea"
           = f.label :image
           = f.file_field :image
-          = f.submit "Blame", class: "btn m-button_blame rating-form--submit"
+          = f.submit "Blame", class: "m-button rating-form--submit"
 
-  .span4
-    .m-box
-      %h2 Space Ranking
-      %ol
-        -@ranked_users.each do |user|
-          %li.m-user
+  -# space ranking
+  .l-column-3--column.m-box_list.ordered.last
+    %h2.m-box--title Space Ranking
+    %ol.unstyled
+      -@ranked_users.each_with_index do |user, index|
+        %li.m-user.m-box_list--item
+          .m-box_list--item--rank= index+1
+          .m-box_list--item--text
             = link_to(user.name, user)
-            = image_tag(user.remote_image_url, class: 'm-user--image')
-            %span.m-user--karma= formatted_karma(user.karma)
+            %span.m-user--karma= "(#{formatted_karma(user.karma)})".html_safe
+          = link_to image_tag(user.remote_image_url), user, class: 'm-user-image right'
 
-.row
-  .span8
-    .m-box
-      %h2 What to do?
+  .l-column-3--span2-column
+    %h2.m-headline
+      What else needs to be done?
+      = link_to "Calendar view", space_chores_path(@space), class: "m-headline--link pull-right"
 
-      = render "chores/chore_list", chores: @space.chores.untaken
+    = render "chores/chore_list", chores: @space.chores.untaken
 
-      = link_to "See all chores", space_chores_path(@space)
+    = link_to "Calendar view", space_chores_path(@space)
