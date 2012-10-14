@@ -1,4 +1,17 @@
 .m-box
-  background-color: $light-grey
-  margin-top: $margin
-  padding: $padding
+  +box-shadow
+  background-color: $white
+  .m-box--title
+  .m-box--image
+
+.m-box_polaroid
+  @extend .m-box
+
+  .m-box--title
+    padding: $padding
+    height: 2 * 24px
+    +headline-text
+    background-color: $white
+    text-transform: uppercase
+    display: block
+

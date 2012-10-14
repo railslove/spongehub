@@ -1,0 +1,47 @@
+.l-twin-columns
+
+  .l-twin-columns--column.m-box.clementine
+    .m-headline_inverted Sign in
+
+    = form_tag "??" do
+
+      .m-form-row
+        = label_tag :login
+        = text_field_tag :login
+
+      .m-form-row
+        = label_tag :password
+        = password_field_tag :password
+
+      .m-form-row
+        =submit_tag "Sign in", class: "m-button"
+
+  .l-twin-columns--column.m-box
+    .m-headline_inverted Sign up
+
+    = form_tag "/auth/identity/register" do
+      -if @identity && @identity.errors.any?
+        .error_messages
+          %h2= "#{pluralize(@identity.errors.count, "error")} prohibited this account from being saved:"
+          %ul
+            -@identity.errors.full_messages.each do |msg|
+              %li= msg
+
+      .m-form-row
+        = label_tag :name
+        = text_field_tag :name, @identity.try(:name)
+
+      .m-form-row
+        = label_tag :email
+        = text_field_tag :email, @identity.try(:email)
+
+      .m-form-row
+        = label_tag :password
+        = password_field_tag :password
+
+      .m-form-row
+        = label_tag :password_confirmation
+        = password_field_tag :password_confirmation
+
+      .m-form-row
+        =submit_tag "Sign up", class: "m-button"

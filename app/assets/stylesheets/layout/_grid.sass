@@ -1,0 +1,30 @@
+$full-width: 940px
+
+.l-column-3
+  margin: 0 20px
+  +pie-clearfix
+  margin-bottom: $margin*2
+
+  .l-column-3--column
+    width: ($full-width - 2*20px - 2*30px) / 3
+    margin-right: 30px
+    float: left
+
+    &:last-child, &.last
+      margin-right: 0px
+
+
+.l-twin-columns
+  text-align: center
+  +pie-clearfix
+
+  .l-twin-columns--column
+    width: 380px
+    height: 500px
+    margin-right: $margin
+    margin-left: auto
+    display: inline-block
+    vertical-align: top
+    text-align: left
+    &:last-child
+      margin-right: 0px

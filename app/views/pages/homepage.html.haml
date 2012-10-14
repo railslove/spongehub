@@ -26,15 +26,13 @@
 
   .wischhand
 
-.page-header
-  %h2 Participating spaces
+%h2.m-headline Participating spaces
 
-%section.row
+%section.l-column-3
   -@spaces.each do |space|
-    .span4
-      .m-box
-        = link_to space do
-          = image_tag space.image_url
+    .l-column-3--column.m-box_polaroid
+      = link_to image_tag(space.image_url), space, class: "m-box--image"
+      = link_to space.name, space, class: "m-box--title"
 
 %section.movie
   %iframe{:width => "420", :height => "315", :src => "http://www.youtube.com/embed/WuPShtmJKbI", :frameborder => "0"}
