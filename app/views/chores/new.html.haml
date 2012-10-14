@@ -1,18 +1,4 @@
--if false
-  .l-row
-    %ul.breadcrumb
-      %li
-        = link_to "Home", root_path
-        %span.divider= ">"
-      %li
-        Space:
-        = link_to @space.name, @space
-        %span.divider= ">"
-      %li
-        = link_to "Chores", [@space, :chores]
-        %span.divider= ">"
-      %li.active
-        New
+= render partial: 'spaces/header'
 
 .l-single-column.m-box
   %h1.m-headline_inverted.with-side-margin New chore

@@ -26,6 +26,8 @@
         = link_to image_tag("logo_spongehub.png"), root_path, class: "header-logo"
 
         %ul.header-navigation.unstyled
+          %li
+            = link_to "About", about_path, class: "m-button"
           -if current_user
             - if current_user.spaces.any?
               %li.dropdown
@@ -38,7 +40,7 @@
             %li
               = link_to "Sign out", signout_path, class: "m-button"
           -else
-            .dropdown.m-signin
+            %li.dropdown.m-signin
               = link_to "#", class: "dropdown-toggle m-button", data: { toggle: 'dropdown' } do
                 Sign in using…
                 .m-icon.down-dir
