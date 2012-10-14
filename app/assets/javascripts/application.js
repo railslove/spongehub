@@ -22,3 +22,4 @@
 //= require user_select
 //= require datetime_moment
 //= require datepicker_role
+//= require boomchickwowwow

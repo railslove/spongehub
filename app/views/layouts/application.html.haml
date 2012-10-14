@@ -66,19 +66,19 @@
           .team
             by Team
             = link_to "BoomChickaWowWow", "http://railsrumble.com/entries/47-boom-chicka-wow-wow", target: "_blank"
-        %ul.creators.unstyled{data: {role: 'boomchickwowwow'}}
+        %ul.creators.unstyled{data: {role: 'boomchickawowwow'}}
           %li{title: "Boom aka. Jan"}
             = link_to(image_tag("creators/koos.jpg"), "http://twitter.com/koos")
-            .creators--text= "Boom"
+            .creators--text{data: {role: 'text'}}= "Boom"
           %li{title: "Chicka aka. Liane"}
             = link_to(image_tag("creators/liane_thoennes.jpg"), "http://twitter.com/liane_thoennes")
-            .creators--text= "Chicka"
+            .creators--text{data: {role: 'text'}}= "Chicka"
           %li{title: "Wow aka. Jakob"}
             = link_to(image_tag("creators/jkwebs.jpg"), "http://twitter.com/jkwebs")
-            .creators--text= "Wow"
+            .creators--text{data: {role: 'text'}}= "Wow"
           %li{title: "Wow aka. Max"}
             = link_to(image_tag("creators/namxam.jpg"), "http://twitter.com/namxam")
-            .creators--text= "Wow"
+            .creators--text{data: {role: 'text'}}= "Wow"
 
         .twitter
           Follow
