@@ -52,6 +52,26 @@
       .content
         = yield
 
+      %footer.footer
+        %h3.made-with
+          Made with
+          .m-icon.heart
+          at&nbsp;
+          = link_to "Rails Rumble 2012", "http://railsrumble.com", target: "_blank"
+          %br
+          by Team
+          = mail_to "boomchickawowwow@railslove.com", "BoomChickaWowWow"
+
+        %ul.creators.unstyled
+          %li{title: "Boom aka. Jan"}
+            = image_tag "creators/koos.jpg"
+          %li{title: "Chicka aka. Liane"}
+            = image_tag "creators/liane_thoennes.jpg"
+          %li{title: "Wow aka. Jakob"}
+            = image_tag "creators/jkwebs.jpg"
+          %li{title: "Wow aka. Max"}
+            = image_tag "creators/namxam.jpg"
+
     = javascript_include_tag "application"
 
     = render "layouts/analytics"
