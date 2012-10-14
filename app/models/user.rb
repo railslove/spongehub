@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   include Sprockets::Helpers::RailsHelper
   include Sprockets::Helpers::IsolatedHelper
+  include Rails.application.routes.url_helpers
 
   attr_accessible :name, :email, :image
   mount_uploader :image, ImageUploader
@@ -15,7 +16,7 @@ class User < ActiveRecord::Base
   after_save :update_identity_email
 
   validates_uniqueness_of :email, :allow_blank => true
-  validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
+  validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i, :allow_blank => true
 
   scope :by_query, lambda { |term| where('name LIKE ?', "%#{term}%") }
   scope :by_exact_query, lambda { |term| where('LOWER(name) = ?', "#{term.downcase}") }
@@ -27,13 +28,13 @@ class User < ActiveRecord::Base
   }
 
   def remote_image_url
-    self.image.file.present? && self.image.url || read_attribute(:remote_image_url).presence || asset_path("fallbacks/default_remote_image.png")
+    self.image.file.present? && self.image.url || read_attribute(:remote_image_url).presence || "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(self.email.to_s)}?d=http://spongehub.net/default_remote_image.png"
   end
 
   def update_identity_email
     authentication = Authentication.find_by_user_id_and_provider(self.id, "identity")
     identity = authentication.identity if authentication
-    if identity.present? && self.email.present?
+    if identity.present?
       identity.email = self.email
       identity.save!
     end
