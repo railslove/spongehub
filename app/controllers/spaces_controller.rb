@@ -1,6 +1,8 @@
 class SpacesController < ApplicationController
 
   before_filter :authentication_required, :except => [:show, :index]
+  before_filter :load_space, except: [:index, :new, :create]
+  before_filter :check_space_membership, except: [:index, :show, :new, :create]
 
   def index
     @spaces = Space.all
@@ -12,7 +14,6 @@ class SpacesController < ApplicationController
   end
 
   def show
-    @space = Space.find(params[:id])
     @ranked_users = @space.users.with_karma
     @recent_blames = @space.blames.limit(5).order('created_at DESC')
     @recent_fames = @space.fames.limit(5).order('created_at DESC')
@@ -34,7 +35,7 @@ class SpacesController < ApplicationController
   end
 
   def edit
-    @space = Space.find(params[:id])
+    # render edit
   end
 
   def create
@@ -53,8 +54,6 @@ class SpacesController < ApplicationController
   end
 
   def update
-    @space = Space.find(params[:id])
-
     respond_to do |format|
       if @space.update_attributes(params[:space])
         format.html { redirect_to @space, notice: 'Space was successfully updated.' }
@@ -67,12 +66,16 @@ class SpacesController < ApplicationController
   end
 
   def destroy
-    @space = Space.find(params[:id])
     @space.destroy
-
     respond_to do |format|
       format.html { redirect_to spaces_url }
       format.json { head :no_content }
     end
+  end
+
+  protected
+
+  def load_space
+    @space = Space.find(params[:id])
   end
 end

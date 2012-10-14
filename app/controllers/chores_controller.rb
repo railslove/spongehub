@@ -2,6 +2,7 @@ class ChoresController < ApplicationController
 
   before_filter :authentication_required, except: [:show, :index]
   before_filter :load_and_ensure_space
+  before_filter :check_space_membership, except: [:show, :index]
 
   def index
     @chores = @space.chores.all

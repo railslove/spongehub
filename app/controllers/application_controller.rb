@@ -18,4 +18,10 @@ class ApplicationController < ActionController::Base
     redirect_to :root, alert: "Oh, oh! You don't wanna go there!" unless current_user
   end
 
+  def check_space_membership
+    if current_user.blank? || !@space.member?(current_user)
+      redirect_to(@space, alert: "Oh, oh! What are you trying to do?!") and return
+    end
+  end
+
 end
