@@ -19,6 +19,8 @@
         = form_for @space.ratings.new(value: 1), url: space_ratings_path(@space), method: :post, html: {class: "rating-form_fame"} do |f|
           = f.hidden_field :value
           = f.text_area :text, placeholder: "I like ... (fame person with @name)", class: "m-input_textarea rating-form--textarea"
+          = f.label :image
+          = f.file_field :image
           = f.submit "Fame", class: "btn m-button rating-form--submit"
 
   .span4
@@ -35,6 +37,8 @@
         = form_for @space.ratings.new(value: -1), url: space_ratings_path(@space), method: :post, html: {class: "rating-form_blame"} do |f|
           = f.hidden_field :value
           = f.text_area :text, placeholder: "It's a mess ... (blame person with @name)", class: "m-input_textarea rating-form--textarea"
+          = f.label :image
+          = f.file_field :image
           = f.submit "Blame", class: "btn m-button_blame rating-form--submit"
 
   .span4
