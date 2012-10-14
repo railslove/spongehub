@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   include Rails.application.routes.url_helpers
 
   attr_accessible :name, :email, :image
-  mount_uploader :image, ImageUploader
+  mount_uploader :image, AvatarUploader
 
   has_many :chores, dependent: :destroy, foreign_key: "taker_id"
   has_many :ratings, dependent: :destroy
@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   }
 
   def remote_image_url
-    self.image.file.present? && self.image.url || read_attribute(:remote_image_url).presence || "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(self.email.to_s)}?d=http://spongehub.net/default_remote_image.png"
+    self.image.file.present? && self.image.url(:square) || "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(self.email.to_s)}?d=http://spongehub.net/default_remote_image.png"
   end
 
   def update_identity_email
