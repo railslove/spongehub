@@ -28,15 +28,13 @@ class BannerImageUploader < ImageUploader
   #   # do something
   # end
 
-  process resize_to_fill: [1170, 240]
-
   # Create different versions of your uploaded files:
-  version :regular do
-    process resize_to_fill: [940, 192]
+  version :wide do
+    process resize_to_fill: [900, 240]
   end
 
-  version :small do
-    process resize_to_fill: [724, 124]
+  version :homepage do
+    process resize_to_fill: [280, 210]
   end
 
 end

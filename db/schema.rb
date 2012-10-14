@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121014114543) do
+ActiveRecord::Schema.define(:version => 20121014155943) do
 
   create_table "authentications", :force => true do |t|
     t.string   "provider",   :null => false
@@ -60,8 +60,9 @@ ActiveRecord::Schema.define(:version => 20121014114543) do
   create_table "spaces", :force => true do |t|
     t.string   "name"
     t.string   "image"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "promote",    :default => false
   end
 
   create_table "spaces_users", :force => true do |t|
