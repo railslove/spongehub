@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
   def homepage
-    @spaces = Space.limit(6)
+    @spaces = Space.where(promote: true).order('RAND()').limit(6)
   end
 
   def about
