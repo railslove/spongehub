@@ -1,9 +1,9 @@
+= render partial: 'spaces/header'
+
 .l-single-column.m-box
   %h1.m-headline_inverted.with-side-margin Editing space
 
   = render 'form'
 
   .m-box--actions
-    = link_to 'Show', @space
-    \|
-    = link_to 'Back', spaces_path
+    = link_to 'Back', @space
