@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
 
   scope :by_query, lambda { |term| where('name LIKE ?', "%#{term}%") }
+  scope :by_exact_query, lambda { |term| where('LOWER(name) = ?', "#{term.downcase}") }
   scope :with_karma, lambda {
     select('users.*, COALESCE(SUM(ratings.value), 0) as raw_karma').
       joins('LEFT JOIN ratings ON ratings.rated_id = users.id').

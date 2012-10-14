@@ -24,4 +24,17 @@ module ApplicationHelper
       content_tag(:span, karma, class: 'none')
     end
   end
+
+  def formatted_rating(rating)
+    body = h(rating.text)
+    if user = rating.rated
+      user_link = link_to("@#{user.name}", user)
+      body = if body.match(/@#{user.name}/i)
+        body.gsub(/@#{user.name}/i, user_link)
+      else
+        user_link + ' ' + body
+      end
+    end
+    body.html_safe
+  end
 end

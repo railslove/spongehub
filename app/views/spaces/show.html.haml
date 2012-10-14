@@ -11,16 +11,14 @@
         %ul.unstyled
           -@recent_fames.each do |fame|
             %li.well
-              = link_to("@#{fame.rated.name}", fame.rated) if fame.rated.present?
-              = fame.text
+              = formatted_rating(fame)
               .m-moment{ 'data-role' => 'moment' }= fame.created_at.to_s(:db)
 
 
       -if current_user
         = form_for @space.ratings.new(value: 1), url: space_ratings_path(@space), method: :post, html: {class: "rating-form_fame"} do |f|
           = f.hidden_field :value
-          = f.text_area :text, placeholder: "I like ...", class: "m-input_textarea rating-form--textarea"
-          = f.hidden_field :rated_id, data: { role: 'select', source: space_users_path(@space) }
+          = f.text_area :text, placeholder: "I like ... (fame person with @name)", class: "m-input_textarea rating-form--textarea"
           = f.submit "Fame", class: "btn m-button rating-form--submit"
 
   .span4
@@ -30,15 +28,13 @@
         %ul.unstyled
           -@recent_blames.each do |blame|
             %li.well
-              = link_to("@#{blame.rated.name}", blame.rated) if blame.rated.present?
-              = blame.text
+              = formatted_rating(blame)
               .m-moment{ 'data-role' => 'moment' }= blame.created_at.to_s(:db)
 
       -if current_user
         = form_for @space.ratings.new(value: -1), url: space_ratings_path(@space), method: :post, html: {class: "rating-form_blame"} do |f|
           = f.hidden_field :value
-          = f.text_area :text, placeholder: "It's a mess ...", class: "m-input_textarea rating-form--textarea"
-          = f.hidden_field :rated_id, data: { role: 'select', source: space_users_path(@space) }
+          = f.text_area :text, placeholder: "It's a mess ... (blame person with @name)", class: "m-input_textarea rating-form--textarea"
           = f.submit "Blame", class: "btn m-button_blame rating-form--submit"
 
   .span4
