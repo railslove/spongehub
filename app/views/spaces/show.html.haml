@@ -1,7 +1,9 @@
 = render partial: 'spaces/header'
 
-.m-box
-  %h2 Top Chore
+- if @suggested_chore
+  .m-box
+    = @suggested_chore.title
+    = link_to "Oh, yes!", take_space_chore_path(@space, @suggested_chore), method: :put, class: "btn"
 
 .row
   .span4
