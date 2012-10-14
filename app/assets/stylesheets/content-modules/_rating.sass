@@ -1,15 +1,27 @@
 .rating-form
-  .rating-form--textarea, .rating-form--submit
+  .rating-form--title
+    +headline-text($small-headline-font-size)
+    margin-bottom: $padding
+
+  .rating-form--textarea
     height: 80px
 
   .rating-form--textarea
     +box-sizing(border-box)
 
   .rating-form--submit
-    width: 80px
+    display: block
+    width: 80%
+    margin: 0px auto
 
 .rating-form_fame
   @extend .rating-form
 
+  .rating-form--title
+    color: $dark-fame-color
+
 .rating-form_blame
   @extend .rating-form
+
+  .rating-form--title
+    color: $dark-blame-color

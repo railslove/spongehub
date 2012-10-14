@@ -1,7 +1,7 @@
 .m-hero
   border-radius: 0
   height: 240px
-  margin-top: 20px
+  margin: 0px $margin $margin $margin
   padding: 0
   position: relative
 
@@ -13,12 +13,14 @@
   .m-hero--title
     display: inline-block
     position: absolute
+    margin: 0
     bottom: $margin
     left: $margin
     padding: $padding
-    background-color: $transparent-color
+    background-color: $white
     &, a
-      color: $light-text-color
+      +headline-text
+      text-transform: uppercase
 
   .m-hero--actions
     position: absolute

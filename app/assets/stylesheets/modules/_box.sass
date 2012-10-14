@@ -1,11 +1,14 @@
 .m-box
   +box-shadow
   background-color: $white
+  margin-bottom: 20px
+
   .m-box--title
   .m-box--image
 
 .m-box_polaroid
   @extend .m-box
+
 
   .m-box--title
     padding: $padding
@@ -15,3 +18,56 @@
     text-transform: uppercase
     display: block
 
+
+// list submodule
+
+.m-box_list
+  @extend .m-box
+
+  .m-box--title
+    +headline-text($huge-headline-font-size, $medium-grey, .9)
+    border-bottom: $margin solid $medium-grey
+    text-align: center
+    text-transform: uppercase
+    margin: 0px
+    padding: $padding 0
+    background-color: $lightest-grey
+
+  .m-box_list--item
+    padding: $padding*2 $padding
+    border-bottom: 1px solid $medium-grey
+    +clearfix
+
+
+  &.ordered
+    > ol
+      margin: 0
+    .m-box_list--item
+      padding: $padding
+      .m-box_list--item--rank
+        +headline-text($huge-headline-font-size, $medium-grey, 1)
+        width: 40px
+        text-align: center
+      .m-box_list--item--rank, .m-box_list--item--text
+        height: $huge-headline-font-size
+        line-height: $huge-headline-font-size
+        float: left
+
+
+  &.fames
+    .m-box--title
+      color: shade($fame-color, 30%)
+      background-color: $fame-color
+      border-color: $dark-fame-color
+
+    .m-box_list--item
+      border-color: $dark-fame-color
+
+  &.blames
+    .m-box--title
+      color: $dark-blame-color
+      background-color: $blame-color
+      border-color: $dark-blame-color
+
+    .m-box_list--item
+      border-color: $dark-blame-color

@@ -1,7 +1,17 @@
 .m-headline
-  margin: $margin
+  margin: $margin 0
   +headline-text($big-headline-font-size, $white)
   text-transform: uppercase
+
+  .m-headline--link
+    +fliesstext($fliesstext-font-size, $link-color)
+    text-transform: none
+    line-height: $big-headline-font-size * 1.2
+    vertical-align: bottom
+
+  &.with-side-margin
+    margin-right: $margin
+    margin-left: $margin
 
 .m-headline_inverted
   @extend .m-headline
