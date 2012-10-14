@@ -1,4 +1,4 @@
-.m-hero.m-box{ style: "background: url(#{@space.image.url})" }
+.m-hero.m-box{ style: "background: url(#{@space.image_url(:wide)})" }
   %h1.m-hero--title= link_to(@space.name, @space)
   - if @space.member?(current_user)
     .m-hero--actions
