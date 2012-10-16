@@ -12,12 +12,13 @@
       = link_to(image_tag("voteforus.png"), "http://railsrumble.com/entries/47-boom-chicka-wow-wow")
 
     -if flash[:alert]
-      .flash_alert{data: {role: "flash"}}
+      .flash_alert{data: {role: "flash", type: 'alert'}}
         .flash--text= flash[:alert]
+        = link_to "X", "#", class: "m-button flash--close", data: {role: 'close'}
     -elsif flash[:notice]
-      .flash_notice{data: {role: "flash"}}
+      .flash_notice{data: {role: "flash", type: 'notice'}}
         .flash--text= flash[:notice]
-
+        = link_to "X", "#", class: "m-button flash--close", data: {role: 'close'}
 
     .container
       %header.header
@@ -37,9 +38,10 @@
                 %ul.dropdown-menu
                   - current_user.spaces.each do |space|
                     %li= link_to space.name, space
+            -#%li
+              =# link_to image_tag(current_user.remote_image_url, width: 25, height: 25), user_path(current_user), class: 'm-button'
             %li
               = link_to "Sign out", signout_path, class: "m-button"
-              = link_to(image_tag(current_user.remote_image_url), user_path(current_user))
           -else
             %li.dropdown.m-signin
               = link_to "#", class: "dropdown-toggle m-button", data: { toggle: 'dropdown' } do
@@ -62,18 +64,27 @@
           for&nbsp;
           = link_to "Rails Rumble 2012", "http://railsrumble.com/entries/47-boom-chicka-wow-wow", target: "_blank"
           %br
-          by Team
-          = link_to "BoomChickaWowWow", "http://railsrumble.com/entries/47-boom-chicka-wow-wow", target: "_blank"
-          =# link_to "@spongehub_", "http://twitter.com/spongehub_", target: "_blank"
-        %ul.creators.unstyled
+          .team
+            by Team
+            = link_to "BoomChickaWowWow", "http://railsrumble.com/entries/47-boom-chicka-wow-wow", target: "_blank"
+        %ul.creators.unstyled{data: {role: 'boomchickawowwow'}}
           %li{title: "Boom aka. Jan"}
             = link_to(image_tag("creators/koos.jpg"), "http://twitter.com/koos")
+            .creators--text{data: {role: 'text'}}= "Boom"
           %li{title: "Chicka aka. Liane"}
             = link_to(image_tag("creators/liane_thoennes.jpg"), "http://twitter.com/liane_thoennes")
+            .creators--text{data: {role: 'text'}}= "Chicka"
           %li{title: "Wow aka. Jakob"}
             = link_to(image_tag("creators/jkwebs.jpg"), "http://twitter.com/jkwebs")
+            .creators--text{data: {role: 'text'}}= "Wow"
           %li{title: "Wow aka. Max"}
             = link_to(image_tag("creators/namxam.jpg"), "http://twitter.com/namxam")
+            .creators--text{data: {role: 'text'}}= "Wow"
+
+        .twitter
+          Follow
+          = link_to "@spongehub_", "http://twitter.com/spongehub_", target: "_blank"
+          on Twitter
 
     = javascript_include_tag "application"
 
