@@ -13,6 +13,7 @@ class Rating < ActiveRecord::Base
   validates :text, :presence => true
 
   before_save :match_rated_token
+  after_save :notify_user
 
   protected
 
@@ -20,5 +21,17 @@ class Rating < ActiveRecord::Base
     if self.rated_id.blank? && matched_user = TextUserTokenizer.new(text, space.users).unique_match
       self.rated_id = matched_user.id
     end
+  end
+
+  def blame?
+    self.value == -1
+  end
+
+  def fame?
+    self.value == 1
+  end
+
+  def notify_user
+    UserMailer.blame_or_fame(self.rated, self.space).deliver if self.rated.present? && self.rated.email.present?
   end
 end

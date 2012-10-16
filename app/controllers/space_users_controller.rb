@@ -17,7 +17,10 @@ class SpaceUsersController < ApplicationController
   end
 
   def create
-    @space.user_ids = (@space.user_ids +  [params[:user_id]].flatten.map(&:to_i)).uniq
+    @user = User.find(params[:user_id])
+    @space.users << @user
+    # @space.user_ids = (@space.user_ids + [params[:user_id]].flatten.map(&:to_i)).uniq
+    UserMailer.invite(@user, @space).deliver if @user.email.present?
     redirect_to [@space, :users], notice: 'User has been added to this space!'
   end
 
